@@ -1,0 +1,2013 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anaclient — Najlepszy Minecraft Client</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Floating Particles -->
+    <div class="particles" id="particles"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Anaclient" onerror="this.src='https://via.placeholder.com/40/9d50bb/ffffff?text=A'">
+                <span>Anaclient</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Funkcje</a></li>
+                <li><a href="#video-showcase">Showcase</a></li>
+                <li><a href="#showcase">Moduły</a></li>
+                <li><a href="#pricing">Cennik</a></li>
+                <li><a href="#testimonials">Opinie</a></li>
+            </ul>
+            <div class="nav-cta">
+                <button id="loginBtn" class="btn btn-login"><i class="fas fa-user"></i> Zaloguj się</button>
+                <div id="userPanel" class="user-panel hidden">
+                    <button id="userMenuBtn" class="btn btn-login logged-in"><i class="fas fa-user-check"></i> <span id="usernameDisplay"></span></button>
+                    <div id="userDropdown" class="user-dropdown hidden">
+                        <button id="panelBtn"><i class="fas fa-cog"></i> Panel</button>
+                        <button id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Wyloguj się</button>
+                    </div>
+                </div>
+                <a href="https://discord.gg/6vwCvJSd9f" target="_blank" class="btn btn-discord"><i class="fab fa-discord"></i> Discord</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="version-banner">
+        <div class="container">
+            <span class="version-badge">⚡ WKRÓTCE</span>
+            <span class="version-text">Niedługo wersja 2.1</span>
+            <a href="https://discord.gg/6vwCvJSd9f" target="_blank" class="version-link">Dowiedz się więcej</a>
+        </div>
+    </div>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Zdominuj serwer z <span class="gradient-text">Anaclient</span></h1>
+                <p>Najbardziej zaawansowany i niewykrywalny client do Minecrafta. Zoptymalizowany pod kątem PvP i użyteczności.</p>
+                <div class="hero-btns">
+                    <a href="https://discord.gg/6vwCvJSd9f" target="_blank" class="btn btn-primary">Kup Teraz</a>
+                    <a href="#showcase" class="btn btn-secondary">Zobacz Showcase</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card c1">
+                    <i class="fas fa-shield-halved"></i>
+                    <div>
+                        <h4>Combat</h4>
+                        <p>AutoLever, Error Killer, AimAssist</p>
+                    </div>
+                </div>
+                <div class="floating-card c2">
+                    <i class="fas fa-eye"></i>
+                    <div>
+                        <h4>Visuals</h4>
+                        <p>ESP, Tracers, Chams</p>
+                    </div>
+                </div>
+                <div class="floating-card c3">
+                    <i class="fas fa-wind"></i>
+                    <div>
+                        <h4>Movement</h4>
+                        <p>NoJumpDelay, AutoSprint, Gui Move</p>
+                    </div>
+                </div>
+                <div class="hero-glow"></div>
+            </div>
+        </div>
+    </header>
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Dlaczego <span class="gradient-text">My</span>?</h2>
+                <p>Nasze funkcje są projektowane z myślą o najwyższej wydajności.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-bolt"></i></div>
+                    <h3>Wydajność</h3>
+                    <p>Zero spadków FPS. Client jest zoptymalizowany pod słabe komputery.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-ghost"></i></div>
+                    <h3>Niewykrywalność</h3>
+                    <p>Nasze bypassy są codziennie aktualizowane pod najnowsze anty-cheaty.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon-box"><i class="fas fa-palette"></i></div>
+                    <h3>Personalizacja</h3>
+                    <p>Zmień wygląd GUI i modułów pod swój własny styl.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="video-showcase" class="showcase">
+        <div class="container">
+            <div class="section-title">
+                <h2>Video <span class="gradient-text">Showcase</span></h2>
+                <p>Zobacz jak Anaclient sprawuje się w akcji.</p>
+            </div>
+            <div class="video-container">
+                <video autoplay loop muted playsinline>
+                    <source src="https://i.imgur.com/gH8uyGc.mp4" type="video/mp4">
+                    Twoja przeglądarka nie wspiera wideo.
+                </video>
+                <div class="video-overlay"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section id="showcase" class="showcase">
+        <div class="container">
+            <div class="section-title">
+                <h2>Wszystkie <span class="gradient-text">Moduły</span></h2>
+                <p>Pełna lista funkcji dostępnych w Anaclient</p>
+            </div>
+            <div class="modules-list">
+                <div class="module-category">
+                    <h3><i class="fas fa-crosshairs"></i> Combat</h3>
+                    <div class="module-items">
+                        <div class="module-item">
+                            <span class="module-name">Cobweb Placer</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Hitbox Breaker</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">AutoDripStone</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">NoFriendHurt</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Auto Gapple</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Pearl Chaser</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">AutoTotem</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">AutoArmor</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Trigger Bot</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Aim Assist</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Auto Lever</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">HitEffect</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">SlotLock</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">BowAim</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Aura</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="module-category">
+                    <h3><i class="fas fa-running"></i> Movement</h3>
+                    <div class="module-items">
+                        <div class="module-item">
+                            <span class="module-name">No Jump Delay</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">GUI Move</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Move Fix</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Speed</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Sprint</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="module-category">
+                    <h3><i class="fas fa-user"></i> Player</h3>
+                    <div class="module-items">
+                        <div class="module-item">
+                            <span class="module-name">Anti Trap</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Msg Bot</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">NoPush</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">FreeCam</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Discord</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">No Server Pack</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Toggle Sounds</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Lever Replace</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Auto Logout</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Elytra Swap</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Fake Player</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Sword Info</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Fast Place</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Better Painting</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Mouse Tweaks</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Name Protect</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">No GUI Sign</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">ElytraBoost</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Anti Frame</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Fast Break</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Spammer</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="module-category">
+                    <h3><i class="fas fa-eye"></i> Visuals</h3>
+                    <div class="module-items">
+                        <div class="module-item">
+                            <span class="module-name">Swing Animation</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Color Gradient</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">BlockOutline</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Jump Circle</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">View Model</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Name Tags</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">No Render</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Entity ESP</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Health Indicator</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Logout Spots</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Storage ESP</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Trajectories</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Motion Blur</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Target ESP</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Ambience</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">China Hat</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Block ESP</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Fullbright</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">KillEffect</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Item ESP</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Particles</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Outlines</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Trap ESP</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Pointers</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Tracers</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Chams</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">X-Ray</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Trials</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="module-category">
+                    <h3><i class="fas fa-cogs"></i> Utils</h3>
+                    <div class="module-items">
+                        <div class="module-item">
+                            <span class="module-name">AutoRynek</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                        <div class="module-item">
+                            <span class="module-name">Gear Render</span>
+                            <span class="module-status">✓</span>
+                        </div>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Wybierz swój <span class="gradient-text">Plan</span></h2>
+                <p>Prosty i przejrzysty cennik bez ukrytych opłat.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>Miesiąc</h3>
+                        <div class="amount">20 PLN</div>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> Wszystkie funkcje</li>
+                        <li><i class="fas fa-check"></i> Wsparcie 24/7</li>
+                        <li><i class="fas fa-check"></i> Aktualizacje</li>
+                    </ul>
+                    <a href="https://discord.gg/6vwCvJSd9f" target="_blank" class="btn btn-outline">Wybierz</a>
+                </div>
+                <div class="price-card popular">
+                    <div class="popular-badge">NAJPOPULARNIEJSZY</div>
+                    <div class="price-header">
+                        <h3>Lifetime</h3>
+                        <div class="price-wrapper">
+                            <span class="original-price">60 PLN</span>
+                            <div class="amount">50 PLN</div>
+                        </div>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> Dożywotni dostęp</li>
+                        <li><i class="fas fa-check"></i> Priorytetowe wsparcie</li>
+                        <li><i class="fas fa-check"></i> Beta testy nowych funkcji</li>
+                        <li><i class="fas fa-check"></i> Rola na Discordzie</li>
+                    </ul>
+                    <a href="https://discord.gg/6vwCvJSd9f" target="_blank" class="btn btn-primary">Kup Teraz</a>
+                </div>
+                <div class="price-card">
+                    <div class="price-header">
+                        <h3>3 miesiące</h3>
+                        <div class="amount">40 PLN</div>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="fas fa-check"></i> Wszystkie funkcje</li>
+                        <li><i class="fas fa-check"></i> Wsparcie 24/7</li>
+                        <li><i class="fas fa-check"></i> Aktualizacje</li>
+                    </ul>
+                    <a href="https://discord.gg/6vwCvJSd9f" target="_blank" class="btn btn-outline">Wybierz</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Co mówią <span class="gradient-text">Nasi Użytkownicy</span></h2>
+                <p>Poznaj opinie społeczności o Anaclient</p>
+            </div>
+            <div class="testimonials-scroll">
+                <div class="testimonials-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://i.pinimg.com/170x/29/13/2a/29132a733a0a35334eca7d34b2ba3add.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Asseku</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit mega polecam"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://projectrpg.pl/uploads/monthly_2021_04/cj-z-san-andreas-nigdy-nie-bede-juz-wspolpracowal-z-rockstar-aktor-nie-pojawi-sie-w-gta-6-1578037339323.thumb.jpg.58e08919d3e589618dcfce66a921fb20.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>DomajGames</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit polecam"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ce9a7706-dc50-4f79-9770-9e9faa421e97-profile_image-300x300.png" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Bazyl420</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"LEGIT! balem sie ze nie zadziala lub ze to wirus ale wszystko smiga polecam!"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://multirpg.pl/uploads/monthly_2021_11/XX.jpg.eaa0641229c24551c5463db1385c2b76.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Aki</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Legit polecam każdemu"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://i.pinimg.com/236x/d4/9b/de/d49bdedae61a3e1cd13e605ce9d681ef.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>OXSzcza4r</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit mega fajne cheatki opylolo sie"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://multirpg.pl/uploads/monthly_2022_02/1069837034_profilowedc.thumb.jpg.a72eaee0cadceed9f32e0618d2a1ee68.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Puszek_Okruszek</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Legit ! Polecam serdecznie 🤑"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://www.tiktok.com/api/img/?itemId=7630070762476490006&location=0&aid=1988" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>DroppedByKrzys</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Legit,nie da się wykryć."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://mta4life.pl/uploads/monthly_2021_12/avatar_138.gif.6425f4cf0bdda9245c93aa59f24a7656.gif" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>konkon</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="http://avatar.rf4game.com/rf4.pl/wp-content/uploads/avatar/256/1247/1247261.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>grinch40</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit klasa"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://forum.arenaskilla.pl/uploads/monthly_2019_05/Mati-avatar.thumb.png.f3895339ccdf79b61317c1c88b130690.png" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Antoni</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit polecam"</p>
+                    </div>
+                    <!-- Duplicate for infinite scroll -->
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://i.pinimg.com/170x/29/13/2a/29132a733a0a35334eca7d34b2ba3add.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Asseku</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit mega polecam"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://projectrpg.pl/uploads/monthly_2021_04/cj-z-san-andreas-nigdy-nie-bede-juz-wspolpracowal-z-rockstar-aktor-nie-pojawi-sie-w-gta-6-1578037339323.thumb.jpg.58e08919d3e589618dcfce66a921fb20.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>DomajGames</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit polecam"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ce9a7706-dc50-4f79-9770-9e9faa421e97-profile_image-300x300.png" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Bazyl420</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"LEGIT! balem sie ze nie zadziala lub ze to wirus ale wszystko smiga polecam!"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://multirpg.pl/uploads/monthly_2021_11/XX.jpg.eaa0641229c24551c5463db1385c2b76.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Aki</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Legit polecam każdemu"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://i.pinimg.com/236x/d4/9b/de/d49bdedae61a3e1cd13e605ce9d681ef.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>OXSzcza4r</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit mega fajne cheatki opylolo sie"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://multirpg.pl/uploads/monthly_2022_02/1069837034_profilowedc.thumb.jpg.a72eaee0cadceed9f32e0618d2a1ee68.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Puszek_Okruszek</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Legit ! Polecam serdecznie 🤑"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://www.tiktok.com/api/img/?itemId=7630070762476490006&location=0&aid=1988" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>DroppedByKrzys</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"Legit,nie da się wykryć."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://mta4life.pl/uploads/monthly_2021_12/avatar_138.gif.6425f4cf0bdda9245c93aa59f24a7656.gif" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>konkon</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="http://avatar.rf4game.com/rf4.pl/wp-content/uploads/avatar/256/1247/1247261.jpg" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>grinch40</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit klasa"</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <div class="testimonial-avatar">
+                                <img src="https://forum.arenaskilla.pl/uploads/monthly_2019_05/Mati-avatar.thumb.png.f3895339ccdf79b61317c1c88b130690.png" alt="Avatar">
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Antoni</h4>
+                                <div class="stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="testimonial-text">"legit polecam"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>Anaclient</span>
+                    <p>Najlepsze cheaty do Minecrafta.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Warunki</a>
+                    <a href="#">Polityka prywatności</a>
+                    <a href="https://discord.gg/6vwCvJSd9f" target="_blank">Discord</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                &copy; 2026 Anaclient. Wszystkie prawa zastrzeżone.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Login/Registration Modal -->
+    <div id="authModal" class="auth-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal"><i class="fas fa-times"></i></button>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Zaloguj się</button>
+                <button class="tab-btn" data-tab="register">Zarejestruj się</button>
+            </div>
+            
+            <!-- Login Form -->
+            <form id="loginForm" class="auth-form">
+                <h2>Zaloguj się</h2>
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="Twój email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Hasło</label>
+                    <input type="password" id="loginPassword" required placeholder="Twoje hasło">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Zaloguj się</button>
+                <p id="loginError" class="error-message"></p>
+            </form>
+            
+            <!-- Register Form -->
+            <form id="registerForm" class="auth-form hidden">
+                <h2>Zarejestruj się</h2>
+                <div class="form-group">
+                    <label for="registerUsername">Nazwa użytkownika</label>
+                    <input type="text" id="registerUsername" required placeholder="Twoja nazwa użytkownika">
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" required placeholder="Twój adres email">
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Hasło</label>
+                    <input type="password" id="registerPassword" required placeholder="Minimum 6 znaków">
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirmPassword">Potwierdź hasło</label>
+                    <input type="password" id="registerConfirmPassword" required placeholder="Potwierdź hasło">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Zarejestruj się</button>
+                <p id="registerError" class="error-message"></p>
+                <p id="registerSuccess" class="success-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="changePasswordModal" class="auth-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeChangePasswordModal"><i class="fas fa-times"></i></button>
+            <form id="changePasswordForm" class="auth-form">
+                <h2>Zmień hasło</h2>
+                <div class="form-group">
+                    <label for="currentPassword">Obecne hasło</label>
+                    <input type="password" id="currentPassword" required placeholder="Twoje obecne hasło">
+                </div>
+                <div class="form-group">
+                    <label for="newPassword">Nowe hasło</label>
+                    <input type="password" id="newPassword" required placeholder="Nowe hasło">
+                </div>
+                <div class="form-group">
+                    <label for="confirmNewPassword">Potwierdź nowe hasło</label>
+                    <input type="password" id="confirmNewPassword" required placeholder="Potwierdź nowe hasło">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Zmień hasło</button>
+                <p id="changePasswordError" class="error-message"></p>
+                <p id="changePasswordSuccess" class="success-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Verification Code Modal -->
+    <div id="verificationModal" class="auth-modal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeVerificationModal"><i class="fas fa-times"></i></button>
+            <form id="verificationForm" class="auth-form">
+                <h2>Weryfikacja Email</h2>
+                <p class="verification-info">Wysłaliśmy 6-cyfrowy kod na Twój adres email. Wpisz go poniżej:</p>
+                <div class="form-group">
+                    <label for="verificationCodeInput">Kod weryfikacyjny</label>
+                    <input type="text" id="verificationCodeInput" required placeholder="6-cyfrowy kod" maxlength="6" pattern="[0-9]{6}">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Zweryfikuj</button>
+                <button type="button" id="resendCodeBtn" class="btn btn-secondary btn-full">Wyślij ponownie</button>
+                <p id="verificationError" class="error-message"></p>
+                <p id="verificationSuccess" class="success-message"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- User Panel Modal -->
+    <div id="userPanelModal" class="auth-modal">
+        <div class="modal-content panel-modal">
+            <button class="close-modal" id="closeUserPanelModal"><i class="fas fa-times"></i></button>
+            <div class="panel-tabs">
+                <button class="panel-tab-btn active" data-tab="profile"><i class="fas fa-user"></i> Profil</button>
+                <button class="panel-tab-btn" data-tab="privacy"><i class="fas fa-shield-alt"></i> Prywatność</button>
+                <button class="panel-tab-btn" data-tab="download"><i class="fas fa-download"></i> Pobierz Moda</button>
+                <button class="panel-tab-btn" data-tab="chat"><i class="fas fa-comments"></i> Chat</button>
+            </div>
+            
+            <!-- Profile Tab -->
+            <div id="profileTab" class="panel-tab">
+                <h2>Profil</h2>
+                <div class="profile-info">
+                    <div class="profile-avatar">
+                        <img id="profileAvatar" src="" alt="Avatar" onerror="this.src='https://via.placeholder.com/100/9d50bb/ffffff?text=?'" style="cursor: pointer;" title="Kliknij aby zmienić avatar">
+                        <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="profile-details">
+                        <div class="detail-item">
+                            <label>Nazwa użytkownika:</label>
+                            <span id="profileUsername"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>UID:</label>
+                            <span id="profileUID"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Rola:</label>
+                            <span id="profileRole"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Email:</label>
+                            <span id="profileEmail"></span>
+                        </div>
+                    </div>
+                </div>
+                <button id="updateProfileBtn" class="btn btn-primary btn-full">Zaktualizuj profil</button>
+                <p id="profileError" class="error-message"></p>
+                <p id="profileSuccess" class="success-message"></p>
+            </div>
+            
+            <!-- Privacy Tab -->
+            <div id="privacyTab" class="panel-tab hidden">
+                <h2>Prywatność</h2>
+                <form id="changePasswordFormPanel">
+                    <div class="form-group">
+                        <label for="currentPasswordPanel">Obecne hasło</label>
+                        <input type="password" id="currentPasswordPanel" required placeholder="Twoje obecne hasło">
+                    </div>
+                    <div class="form-group">
+                        <label for="newPasswordPanel">Nowe hasło</label>
+                        <input type="password" id="newPasswordPanel" required placeholder="Nowe hasło">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmNewPasswordPanel">Potwierdź nowe hasło</label>
+                        <input type="password" id="confirmNewPasswordPanel" required placeholder="Potwierdź nowe hasło">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Zmień hasło</button>
+                    <p id="changePasswordErrorPanel" class="error-message"></p>
+                    <p id="changePasswordSuccessPanel" class="success-message"></p>
+                </form>
+            </div>
+            
+            <!-- Download Tab -->
+            <div id="downloadTab" class="panel-tab hidden">
+                <h2>Pobierz Mod</h2>
+                <div class="download-info">
+                    <p>Twoja rola: <strong id="downloadRole"></strong></p>
+                    <p id="downloadPermissionMessage"></p>
+                </div>
+                <button id="downloadModBtn" class="btn btn-primary btn-full">Pobierz ANACLIENT</button>
+                <p id="downloadError" class="error-message"></p>
+            </div>
+
+            <!-- Chat Tab -->
+            <div id="chatTab" class="panel-tab hidden">
+                <h2>Chat</h2>
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="chat-message system">
+                            <span class="message-content">Witaj w czacie! Tutaj możesz rozmawiać z innymi zalogowanymi użytkownikami.</span>
+                        </div>
+                    </div>
+                    <div class="chat-input-container">
+                        <input type="text" id="chatInput" class="chat-input" placeholder="Napisz wiadomość..." maxlength="500">
+                        <button id="sendChatBtn" class="btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Public Profile Modal -->
+    <div id="publicProfileModal" class="auth-modal">
+        <div class="modal-content panel-modal">
+            <button class="close-modal" id="closePublicProfileModal"><i class="fas fa-times"></i></button>
+            <div class="public-profile-content">
+                <h2>Profil Użytkownika</h2>
+                <div class="public-profile-info">
+                    <div class="public-profile-avatar">
+                        <img id="publicProfileAvatar" src="" alt="Avatar">
+                    </div>
+                    <div class="public-profile-details">
+                        <div class="detail-item">
+                            <label>Nazwa użytkownika:</label>
+                            <span id="publicProfileUsername"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Rola:</label>
+                            <span id="publicProfileRole"></span>
+                        </div>
+                        <div class="detail-item">
+                            <label>Data rejestracji:</label>
+                            <span id="publicProfileJoined"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get browser info
+        function getBrowserInfo() {
+            const ua = navigator.userAgent;
+            let browser = 'Unknown';
+            if (ua.indexOf('Chrome') > -1) browser = 'Chrome';
+            else if (ua.indexOf('Safari') > -1) browser = 'Safari';
+            else if (ua.indexOf('Firefox') > -1) browser = 'Firefox';
+            else if (ua.indexOf('Edge') > -1) browser = 'Edge';
+            return browser;
+        }
+
+        // Chat functionality
+        let chatMessagesRef = null;
+        let chatListener = null;
+
+        function loadChatMessages() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) return;
+
+            const chatMessages = document.getElementById('chatMessages');
+            chatMessages.innerHTML = '<div class="chat-message system"><span class="message-content">Ładowanie wiadomości...</span></div>';
+
+            // Clear previous listener
+            if (chatListener) {
+                chatMessagesRef.off('child_added', chatListener);
+            }
+
+            chatMessagesRef = database.ref('chat');
+            chatMessagesRef.limitToLast(50).once('value', (snapshot) => {
+                chatMessages.innerHTML = '';
+                snapshot.forEach((childSnapshot) => {
+                    const message = childSnapshot.val();
+                    displayChatMessage(message, currentUser.uid, currentUser.profilePicture);
+                });
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+
+            // Listen for new messages
+            chatListener = chatMessagesRef.limitToLast(1).on('child_added', (snapshot) => {
+                const message = snapshot.val();
+                displayChatMessage(message, currentUser.uid, currentUser.profilePicture);
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            });
+        }
+
+        function displayChatMessage(message, currentUid, currentUserAvatar) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'chat-message';
+
+            // Check if this is the current user's message
+            const isOwnMessage = message.senderUid === currentUid;
+
+            if (isOwnMessage) {
+                messageDiv.classList.add('own');
+            } else {
+                messageDiv.classList.add('other');
+            }
+
+            const time = new Date(message.timestamp).toLocaleTimeString('pl-PL', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            // Use sender's avatar from message, or fallback to current user's avatar if it's own message
+            const avatarUrl = message.senderAvatar || (isOwnMessage ? currentUserAvatar : 'https://via.placeholder.com/40/9d50bb/ffffff?text=?');
+
+            messageDiv.innerHTML = `
+                <div class="message-header">
+                    <img src="${avatarUrl}" class="message-avatar" alt="${message.senderUsername}" onclick="viewUserProfile('${message.senderUid}')" style="cursor: pointer;" onerror="this.src='https://via.placeholder.com/40/9d50bb/ffffff?text=?'">
+                    <span class="message-sender" onclick="viewUserProfile('${message.senderUid}')" style="cursor: pointer;">${message.senderUsername}</span>
+                </div>
+                <span class="message-content">${escapeHtml(message.content)}</span>
+                <span class="message-time">${time}</span>
+            `;
+
+            chatMessages.appendChild(messageDiv);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // View public user profile
+        async function viewUserProfile(uid) {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) return;
+
+            try {
+                const userSnapshot = await database.ref('users').orderByChild('uid').equalTo(uid).once('value');
+
+                if (!userSnapshot.exists()) {
+                    alert('Nie znaleziono użytkownika');
+                    return;
+                }
+
+                let userData = null;
+                userSnapshot.forEach(childSnapshot => {
+                    userData = childSnapshot.val();
+                });
+
+                // Populate public profile modal
+                document.getElementById('publicProfileAvatar').src = userData.profilePicture || 'https://via.placeholder.com/100/9d50bb/ffffff?text=?';
+                document.getElementById('publicProfileUsername').textContent = userData.username;
+                document.getElementById('publicProfileRole').textContent = userData.role || 'Player';
+                document.getElementById('publicProfileJoined').textContent = new Date(userData.createdAt).toLocaleDateString('pl-PL');
+
+                // Show modal
+                document.getElementById('publicProfileModal').classList.add('active');
+            } catch (error) {
+                console.error('Error loading user profile:', error);
+                alert('Wystąpił błąd podczas ładowania profilu');
+            }
+        }
+
+        // Close public profile modal
+        document.getElementById('closePublicProfileModal').addEventListener('click', () => {
+            document.getElementById('publicProfileModal').classList.remove('active');
+        });
+
+        document.getElementById('publicProfileModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('publicProfileModal')) {
+                document.getElementById('publicProfileModal').classList.remove('active');
+            }
+        });
+
+        async function sendChatMessage() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) return;
+
+            const chatInput = document.getElementById('chatInput');
+            const content = chatInput.value.trim();
+
+            if (!content) return;
+
+            try {
+                await database.ref('chat').push({
+                    senderUid: currentUser.uid,
+                    senderUsername: currentUser.username,
+                    senderAvatar: currentUser.profilePicture || '',
+                    content: content,
+                    timestamp: Date.now()
+                });
+
+                chatInput.value = '';
+            } catch (error) {
+                console.error('Error sending message:', error);
+            }
+        }
+
+        // Chat event listeners
+        document.getElementById('sendChatBtn').addEventListener('click', sendChatMessage);
+        document.getElementById('chatInput').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendChatMessage();
+            }
+        });
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            databaseURL: "https://feather-faee6-default-rtdb.europe-west1.firebasedatabase.app/"
+        };
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        // EmailJS Configuration (replace with your own credentials)
+        const EMAILJS_PUBLIC_KEY = '-dSy_tXSxhgdu1Iz6';
+        const EMAILJS_SERVICE_ID = 'service_1tiqtof';
+        const EMAILJS_TEMPLATE_ID = 'template_dlwb2pc';
+
+        // Initialize EmailJS
+        try {
+            emailjs.init(EMAILJS_PUBLIC_KEY);
+        } catch (e) {
+            console.log('EmailJS not configured - using fallback mode');
+        }
+
+        // Verification code storage
+        let currentVerificationCode = null;
+        let verificationEmail = null;
+
+        // Modal functionality
+        const modal = document.getElementById('authModal');
+        const changePasswordModal = document.getElementById('changePasswordModal');
+        const verificationModal = document.getElementById('verificationModal');
+        const userPanelModal = document.getElementById('userPanelModal');
+        const loginBtn = document.getElementById('loginBtn');
+        const userPanel = document.getElementById('userPanel');
+        const userMenuBtn = document.getElementById('userMenuBtn');
+        const userDropdown = document.getElementById('userDropdown');
+        const usernameDisplay = document.getElementById('usernameDisplay');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const panelBtn = document.getElementById('panelBtn');
+        const closeModal = document.getElementById('closeModal');
+        const closeChangePasswordModal = document.getElementById('closeChangePasswordModal');
+        const closeVerificationModal = document.getElementById('closeVerificationModal');
+        const closeUserPanelModal = document.getElementById('closeUserPanelModal');
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const panelTabBtns = document.querySelectorAll('.panel-tab-btn');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const verificationForm = document.getElementById('verificationForm');
+        const changePasswordForm = document.getElementById('changePasswordForm');
+        const changePasswordFormPanel = document.getElementById('changePasswordFormPanel');
+        const resendCodeBtn = document.getElementById('resendCodeBtn');
+
+        loginBtn.addEventListener('click', () => {
+            modal.classList.add('active');
+        });
+
+        userMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            userDropdown.classList.toggle('hidden');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!userPanel.contains(e.target)) {
+                userDropdown.classList.add('hidden');
+            }
+        });
+
+        panelBtn.addEventListener('click', () => {
+            userDropdown.classList.add('hidden');
+            loadUserProfile();
+            userPanelModal.classList.add('active');
+        });
+
+        closeUserPanelModal.addEventListener('click', () => {
+            userPanelModal.classList.remove('active');
+        });
+
+        userPanelModal.addEventListener('click', (e) => {
+            if (e.target === userPanelModal) {
+                userPanelModal.classList.remove('active');
+            }
+        });
+
+        // Panel tab switching
+        panelTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                panelTabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const tabId = btn.dataset.tab + 'Tab';
+                document.querySelectorAll('.panel-tab').forEach(tab => {
+                    tab.classList.add('hidden');
+                });
+                document.getElementById(tabId).classList.remove('hidden');
+
+                // Load chat messages when chat tab is opened
+                if (btn.dataset.tab === 'chat') {
+                    loadChatMessages();
+                }
+            });
+        });
+
+        closeChangePasswordModal.addEventListener('click', () => {
+            changePasswordModal.classList.remove('active');
+        });
+
+        changePasswordModal.addEventListener('click', (e) => {
+            if (e.target === changePasswordModal) {
+                changePasswordModal.classList.remove('active');
+            }
+        });
+
+        closeVerificationModal.addEventListener('click', () => {
+            verificationModal.classList.remove('active');
+        });
+
+        verificationModal.addEventListener('click', (e) => {
+            if (e.target === verificationModal) {
+                verificationModal.classList.remove('active');
+            }
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('currentUser');
+            loginBtn.classList.remove('hidden');
+            userPanel.classList.add('hidden');
+            userDropdown.classList.add('hidden');
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+
+        // Tab switching
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                if (btn.dataset.tab === 'login') {
+                    loginForm.classList.remove('hidden');
+                    registerForm.classList.add('hidden');
+                } else {
+                    loginForm.classList.add('hidden');
+                    registerForm.classList.remove('hidden');
+                }
+            });
+        });
+
+        // Generate verification code
+        function generateVerificationCode() {
+            return Math.floor(100000 + Math.random() * 900000).toString();
+        }
+
+        // Generate unique UID
+        function generateUID() {
+            return Math.floor(1000 + Math.random() * 9000).toString();
+        }
+
+        // Verification form submit
+        verificationForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const verificationCodeInput = document.getElementById('verificationCodeInput').value;
+            const errorEl = document.getElementById('verificationError');
+            const successEl = document.getElementById('verificationSuccess');
+
+            errorEl.textContent = '';
+            successEl.textContent = '';
+
+            if (verificationCodeInput !== currentVerificationCode) {
+                errorEl.textContent = 'Nieprawidłowy kod weryfikacyjny!';
+                return;
+            }
+
+            try {
+                const pendingRegistration = JSON.parse(localStorage.getItem('pendingRegistration'));
+                if (!pendingRegistration) {
+                    errorEl.textContent = 'Sesja wygasła. Spróbuj ponownie.';
+                    return;
+                }
+
+                // Get user IP
+                let userIP = 'Unknown';
+                try {
+                    const ipResponse = await fetch('https://api.ipify.org?format=json');
+                    const ipData = await ipResponse.json();
+                    userIP = ipData.ip;
+                } catch (e) {
+                    console.log('Could not get IP address');
+                }
+
+                const usersRef = database.ref('users');
+                const uid = generateUID();
+                const newUserRef = usersRef.push();
+                await newUserRef.set({
+                    uid: uid,
+                    username: pendingRegistration.username,
+                    email: pendingRegistration.email,
+                    password: pendingRegistration.password,
+                    emailVerified: true,
+                    role: 'Player',
+                    profilePicture: '',
+                    createdAt: new Date().toISOString(),
+                    registrationIP: userIP,
+                    registrationBrowser: getBrowserInfo()
+                });
+
+                // Log registration to Firebase - separate location
+                const registrationLogRef = database.ref(`registrationHistory/${uid}`);
+                await registrationLogRef.set({
+                    username: pendingRegistration.username,
+                    email: pendingRegistration.email,
+                    ip: userIP,
+                    timestamp: Date.now(),
+                    userAgent: navigator.userAgent,
+                    browser: getBrowserInfo()
+                });
+
+                // Clear pending registration
+                localStorage.removeItem('pendingRegistration');
+                currentVerificationCode = null;
+                verificationEmail = null;
+
+                successEl.textContent = 'Rejestracja zakończona pomyślnie! Możesz się teraz zalogować.';
+                verificationForm.reset();
+
+                setTimeout(() => {
+                    verificationModal.classList.remove('active');
+                    modal.classList.add('active');
+                    loginForm.classList.remove('hidden');
+                    registerForm.classList.add('hidden');
+                    loginTabBtn.classList.add('active');
+                    registerTabBtn.classList.remove('active');
+                }, 2000);
+
+            } catch (error) {
+                errorEl.textContent = 'Wystąpił błąd podczas weryfikacji: ' + error.message;
+            }
+        });
+
+        // Resend code button
+        resendCodeBtn.addEventListener('click', async () => {
+            const errorEl = document.getElementById('verificationError');
+            const successEl = document.getElementById('verificationSuccess');
+
+            errorEl.textContent = '';
+            successEl.textContent = '';
+
+            try {
+                const pendingRegistration = JSON.parse(localStorage.getItem('pendingRegistration'));
+                if (!pendingRegistration) {
+                    errorEl.textContent = 'Sesja wygasła. Spróbuj ponownie.';
+                    return;
+                }
+
+                currentVerificationCode = generateVerificationCode();
+                verificationEmail = pendingRegistration.email;
+
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                    to_email: pendingRegistration.email,
+                    verification_code: currentVerificationCode
+                });
+
+                successEl.textContent = 'Kod został wysłany ponownie!';
+                resendCodeBtn.disabled = true;
+                setTimeout(() => {
+                    resendCodeBtn.disabled = false;
+                }, 60000);
+
+            } catch (error) {
+                errorEl.textContent = 'Wystąpił błąd podczas wysyłania kodu: ' + error.message;
+            }
+        });
+
+
+        // Registration
+        registerForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('registerUsername').value;
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+            const confirmPassword = document.getElementById('registerConfirmPassword').value;
+            const errorEl = document.getElementById('registerError');
+            const successEl = document.getElementById('registerSuccess');
+
+            errorEl.textContent = '';
+            successEl.textContent = '';
+
+            if (password !== confirmPassword) {
+                errorEl.textContent = 'Hasła nie są identyczne!';
+                return;
+            }
+
+            if (password.length < 6) {
+                errorEl.textContent = 'Hasło musi mieć minimum 6 znaków!';
+                return;
+            }
+
+            try {
+                const usersRef = database.ref('users');
+                
+                // Check if email is already taken
+                const emailSnapshot = await usersRef.orderByChild('email').equalTo(email).once('value');
+                if (emailSnapshot.exists()) {
+                    errorEl.textContent = 'Ten email jest już zajęty!';
+                    return;
+                }
+
+                // Check if username is taken
+                const usernameSnapshot = await usersRef.orderByChild('username').equalTo(username).once('value');
+                if (usernameSnapshot.exists()) {
+                    errorEl.textContent = 'Ta nazwa użytkownika jest już zajęta!';
+                    return;
+                }
+
+                // Store registration data temporarily
+                localStorage.setItem('pendingRegistration', JSON.stringify({
+                    username: username,
+                    email: email,
+                    password: password
+                }));
+                
+                // Close auth modal and open verification modal immediately
+                modal.classList.remove('active');
+                verificationModal.classList.add('active');
+                
+                // Generate and send verification code
+                currentVerificationCode = generateVerificationCode();
+                verificationEmail = email;
+
+                try {
+                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                        to_email: email,
+                        verification_code: currentVerificationCode
+                    });
+                    
+                } catch (e) {
+                    const errorEl = document.getElementById('verificationError');
+                    errorEl.textContent = 'Wystąpił błąd podczas wysyłania kodu: ' + e.message;
+                }
+
+            } catch (error) {
+                errorEl.textContent = 'Wystąpił błąd podczas rejestracji: ' + error.message;
+            }
+        });
+
+        // Login
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const errorEl = document.getElementById('loginError');
+
+            errorEl.textContent = '';
+
+            try {
+                const usersRef = database.ref('users');
+                const snapshot = await usersRef.orderByChild('email').equalTo(email).once('value');
+
+                if (!snapshot.exists()) {
+                    errorEl.textContent = 'Nie znaleziono użytkownika z tym emailem!';
+                    return;
+                }
+
+                let userFound = false;
+                let userData = null;
+
+                snapshot.forEach(childSnapshot => {
+                    userData = childSnapshot.val();
+                    if (userData.password === password) {
+                        userFound = true;
+                    }
+                });
+
+                if (!userFound) {
+                    errorEl.textContent = 'Nieprawidłowe hasło!';
+                    return;
+                }
+
+                // Get user IP
+                let userIP = 'Unknown';
+                try {
+                    const ipResponse = await fetch('https://api.ipify.org?format=json');
+                    const ipData = await ipResponse.json();
+                    userIP = ipData.ip;
+                } catch (e) {
+                    console.log('Could not get IP address');
+                }
+
+                // Log login to Firebase - separate location
+                const loginLogRef = database.ref(`loginHistory/${userData.uid}`);
+                await loginLogRef.push({
+                    username: userData.username,
+                    email: userData.email,
+                    ip: userIP,
+                    timestamp: Date.now(),
+                    userAgent: navigator.userAgent,
+                    browser: getBrowserInfo()
+                });
+
+                // Store user session
+                localStorage.setItem('currentUser', JSON.stringify({
+                    uid: userData.uid,
+                    username: userData.username,
+                    email: userData.email,
+                    role: userData.role || 'Customer',
+                    profilePicture: userData.profilePicture || '',
+                    lastLogin: Date.now()
+                }));
+
+                // Update UI
+                loginBtn.classList.add('hidden');
+                userPanel.classList.remove('hidden');
+                usernameDisplay.textContent = userData.username;
+
+                modal.classList.remove('active');
+                loginForm.reset();
+
+            } catch (error) {
+                errorEl.textContent = 'Wystąpił błąd podczas logowania: ' + error.message;
+            }
+        });
+
+        // Check if user is already logged in
+        window.addEventListener('load', async () => {
+            const currentUser = localStorage.getItem('currentUser');
+            if (currentUser) {
+                const userData = JSON.parse(currentUser);
+                loginBtn.classList.add('hidden');
+                userPanel.classList.remove('hidden');
+                usernameDisplay.textContent = userData.username;
+            }
+        });
+
+        // Load user profile data
+        async function loadUserProfile() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) return;
+
+            try {
+                const usersRef = database.ref('users');
+                const snapshot = await usersRef.orderByChild('email').equalTo(currentUser.email).once('value');
+                
+                if (snapshot.exists()) {
+                    snapshot.forEach(childSnapshot => {
+                        const userData = childSnapshot.val();
+                        document.getElementById('profileUsername').textContent = userData.username;
+                        document.getElementById('profileUID').textContent = userData.uid;
+                        document.getElementById('profileRole').textContent = userData.role || 'Customer';
+                        document.getElementById('profileEmail').textContent = userData.email;
+                        document.getElementById('downloadRole').textContent = userData.role || 'Customer';
+                        
+                        if (userData.profilePicture) {
+                            document.getElementById('profileAvatar').src = userData.profilePicture;
+                        }
+                        document.getElementById('profilePictureCode').value = userData.profilePicture || '';
+                        
+                        // Update download permission message
+                const downloadPermissionMessage = document.getElementById('downloadPermissionMessage');
+                if (userData.role === 'Owner' || userData.role === 'Media' || userData.role === 'Customer') {
+                    downloadPermissionMessage.textContent = 'Masz uprawnienia do pobierania ANACLIENT.';
+                    downloadPermissionMessage.style.color = '#4CAF50';
+                } else {
+                    downloadPermissionMessage.textContent = 'Nie masz uprawnień do pobierania ANACLIENT.';
+                    downloadPermissionMessage.style.color = '#ff4757';
+                }
+                    });
+                }
+            } catch (error) {
+                console.log('Error loading user profile:', error);
+            }
+        }
+
+        // Change password functionality
+        changePasswordForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const currentPassword = document.getElementById('currentPassword').value;
+            const newPassword = document.getElementById('newPassword').value;
+            const confirmNewPassword = document.getElementById('confirmNewPassword').value;
+            const errorEl = document.getElementById('changePasswordError');
+            const successEl = document.getElementById('changePasswordSuccess');
+
+            errorEl.textContent = '';
+            successEl.textContent = '';
+
+            if (newPassword !== confirmNewPassword) {
+                errorEl.textContent = 'Nowe hasła nie są identyczne!';
+                return;
+            }
+
+            if (newPassword.length < 6) {
+                errorEl.textContent = 'Nowe hasło musi mieć minimum 6 znaków!';
+                return;
+            }
+
+            try {
+                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                const usersRef = database.ref('users');
+                const snapshot = await usersRef.orderByChild('email').equalTo(currentUser.email).once('value');
+
+                if (!snapshot.exists()) {
+                    errorEl.textContent = 'Użytkownik nie znaleziony!';
+                    return;
+                }
+
+                let userKey = null;
+                let userData = null;
+
+                snapshot.forEach(childSnapshot => {
+                    userData = childSnapshot.val();
+                    if (userData.password === currentPassword) {
+                        userKey = childSnapshot.key;
+                    }
+                });
+
+                if (!userKey) {
+                    errorEl.textContent = 'Nieprawidłowe obecne hasło!';
+                    return;
+                }
+
+                // Update password
+                await usersRef.child(userKey).update({
+                    password: newPassword
+                });
+
+                successEl.textContent = 'Hasło zostało zmienione pomyślnie!';
+                changePasswordForm.reset();
+
+                setTimeout(() => {
+                    changePasswordModal.classList.remove('active');
+                }, 2000);
+
+            } catch (error) {
+                errorEl.textContent = 'Wystąpił błąd podczas zmiany hasła: ' + error.message;
+            }
+        });
+
+        // Change password in panel functionality
+        changePasswordFormPanel.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const currentPassword = document.getElementById('currentPasswordPanel').value;
+            const newPassword = document.getElementById('newPasswordPanel').value;
+            const confirmNewPassword = document.getElementById('confirmNewPasswordPanel').value;
+            const errorEl = document.getElementById('changePasswordErrorPanel');
+            const successEl = document.getElementById('changePasswordSuccessPanel');
+
+            errorEl.textContent = '';
+            successEl.textContent = '';
+
+            if (newPassword !== confirmNewPassword) {
+                errorEl.textContent = 'Nowe hasła nie są identyczne!';
+                return;
+            }
+
+            if (newPassword.length < 6) {
+                errorEl.textContent = 'Nowe hasło musi mieć minimum 6 znaków!';
+                return;
+            }
+
+            try {
+                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                const usersRef = database.ref('users');
+                const snapshot = await usersRef.orderByChild('email').equalTo(currentUser.email).once('value');
+
+                if (!snapshot.exists()) {
+                    errorEl.textContent = 'Użytkownik nie znaleziony!';
+                    return;
+                }
+
+                let userKey = null;
+                let userData = null;
+
+                snapshot.forEach(childSnapshot => {
+                    userData = childSnapshot.val();
+                    if (userData.password === currentPassword) {
+                        userKey = childSnapshot.key;
+                    }
+                });
+
+                if (!userKey) {
+                    errorEl.textContent = 'Nieprawidłowe obecne hasło!';
+                    return;
+                }
+
+                // Update password
+                await usersRef.child(userKey).update({
+                    password: newPassword
+                });
+
+                successEl.textContent = 'Hasło zostało zmienione pomyślnie!';
+                changePasswordFormPanel.reset();
+
+            } catch (error) {
+                errorEl.textContent = 'Wystąpił błąd podczas zmiany hasła: ' + error.message;
+            }
+        });
+
+        // Update profile functionality
+        document.getElementById('updateProfileBtn').addEventListener('click', async () => {
+            const errorEl = document.getElementById('profileError');
+            const successEl = document.getElementById('profileSuccess');
+
+            errorEl.textContent = '';
+            successEl.textContent = '';
+
+            try {
+                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                const usersRef = database.ref('users');
+                const snapshot = await usersRef.orderByChild('email').equalTo(currentUser.email).once('value');
+
+                if (!snapshot.exists()) {
+                    errorEl.textContent = 'Użytkownik nie znaleziony!';
+                    return;
+                }
+
+                let userKey = null;
+                snapshot.forEach(childSnapshot => {
+                    userKey = childSnapshot.key;
+                });
+
+                // Get current profile picture from avatar
+                const profilePictureCode = document.getElementById('profileAvatar').src;
+
+                // Update profile picture
+                await usersRef.child(userKey).update({
+                    profilePicture: profilePictureCode
+                });
+
+                // Update localStorage
+                currentUser.profilePicture = profilePictureCode;
+                localStorage.setItem('currentUser', JSON.stringify(currentUser));
+
+                successEl.textContent = 'Profil został zaktualizowany pomyślnie!';
+
+            } catch (error) {
+                errorEl.textContent = 'Wystąpił błąd podczas aktualizacji profilu: ' + error.message;
+            }
+        });
+
+        // Avatar file picker
+        document.getElementById('profileAvatar').addEventListener('click', () => {
+            document.getElementById('avatarInput').click();
+        });
+
+        document.getElementById('avatarInput').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    document.getElementById('profileAvatar').src = event.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Download mod functionality
+        document.getElementById('downloadModBtn').addEventListener('click', async () => {
+            const errorEl = document.getElementById('downloadError');
+            errorEl.textContent = '';
+
+            try {
+                const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+                const usersRef = database.ref('users');
+                const snapshot = await usersRef.orderByChild('email').equalTo(currentUser.email).once('value');
+                
+                if (!snapshot.exists()) {
+                    errorEl.textContent = 'Użytkownik nie znaleziony!';
+                    return;
+                }
+
+                let userData = null;
+                snapshot.forEach(childSnapshot => {
+                    userData = childSnapshot.val();
+                });
+
+                // Check if user has permission to download
+                if (userData.role !== 'Owner' && userData.role !== 'Media' && userData.role !== 'Customer') {
+                    errorEl.textContent = 'Nie masz uprawnień do pobierania ANACLIENT.';
+                    return;
+                }
+
+                // Fetch download link based on role from Firebase
+                const downloadLinkPath = `settings/downloadLink/${userData.role}`;
+                const settingsRef = database.ref(downloadLinkPath);
+                const linkSnapshot = await settingsRef.once('value');
+                
+                if (linkSnapshot.exists()) {
+                    let downloadLink = linkSnapshot.val();
+                    
+                    // Convert Google Drive link to direct download link
+                    if (downloadLink.includes('drive.google.com/file/d/')) {
+                        const fileId = downloadLink.match(/\/d\/([^\/]+)/)[1];
+                        downloadLink = `https://drive.google.com/uc?export=download&id=${fileId}`;
+                    }
+                    
+                    // Trigger download
+                    const link = document.createElement('a');
+                    link.href = downloadLink;
+                    link.download = 'Anaclient.jar';
+                    link.style.display = 'none';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                } else {
+                    errorEl.textContent = `Link do pobierania dla roli ${userData.role} nie jest skonfigurowany w Firebase.`;
+                }
+            } catch (error) {
+                errorEl.textContent = 'Wystąpił błąd podczas pobierania: ' + error.message;
+            }
+        });
+
+        // Generate floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+    </script>
+</body>
+</html>
