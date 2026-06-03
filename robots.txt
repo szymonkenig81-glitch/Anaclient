@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin/
 Disallow: /panel/
 
-Sitemap: https://anaclient.pl/sitemap.xml
+Sitemap: https://anaclient.vercel.app/sitemap.xml
