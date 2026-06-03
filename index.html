@@ -24,7 +24,7 @@
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="https://i.imgur.com/qPzXZxK.png" alt="Anaclient">
+                <img src="logo.png" alt="Anaclient" onerror="this.src='https://via.placeholder.com/40/9d50bb/ffffff?text=A'">
                 <span>Anaclient</span>
             </div>
             <ul class="nav-links">
@@ -35,6 +35,19 @@
                 <li><a href="#testimonials">Opinie</a></li>
             </ul>
             <div class="nav-cta">
+                <button id="themeBtn" class="btn btn-theme"><i class="fas fa-palette"></i></button>
+                <div id="themeDropdown" class="theme-dropdown hidden">
+                    <div class="theme-title">Wybierz motyw</div>
+                    <div class="theme-options">
+                        <button class="theme-option" data-theme="purple" style="background: linear-gradient(135deg, #9d50bb 0%, #6e48aa 100%);"></button>
+                        <button class="theme-option" data-theme="blue" style="background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);"></button>
+                        <button class="theme-option" data-theme="green" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);"></button>
+                        <button class="theme-option" data-theme="red" style="background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);"></button>
+                        <button class="theme-option" data-theme="orange" style="background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);"></button>
+                        <button class="theme-option" data-theme="pink" style="background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);"></button>
+                        <button class="theme-option" data-theme="cyan" style="background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);"></button>
+                    </div>
+                </div>
                 <button id="loginBtn" class="btn btn-login"><i class="fas fa-user"></i> Zaloguj się</button>
                 <div id="userPanel" class="user-panel hidden">
                     <button id="userMenuBtn" class="btn btn-login logged-in"><i class="fas fa-user-check"></i> <span id="usernameDisplay"></span></button>
@@ -2021,6 +2034,107 @@
             const progress = (scrollTop / scrollHeight) * 100;
             scrollProgress.style.width = progress + '%';
         });
+
+        // Theme System
+        const themeBtn = document.getElementById('themeBtn');
+        const themeDropdown = document.getElementById('themeDropdown');
+        const themeOptions = document.querySelectorAll('.theme-option');
+
+        // Toggle theme dropdown
+        themeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            themeDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!themeDropdown.contains(e.target) && !themeBtn.contains(e.target)) {
+                themeDropdown.classList.add('hidden');
+            }
+        });
+
+        // Get user IP and load theme
+        async function getUserIP() {
+            try {
+                const response = await fetch('https://api.ipify.org?format=json');
+                const data = await response.json();
+                return data.ip;
+            } catch (error) {
+                console.error('Error getting IP:', error);
+                return null;
+            }
+        }
+
+        // Load theme from Firebase
+        async function loadThemeFromFirebase() {
+            const ip = await getUserIP();
+            if (!ip) return;
+
+            try {
+                const themeRef = database.ref(`themes/${ip}`);
+                const snapshot = await themeRef.once('value');
+                if (snapshot.exists()) {
+                    const theme = snapshot.val();
+                    applyTheme(theme);
+                    updateActiveTheme(theme);
+                }
+            } catch (error) {
+                console.log('Firebase not configured or no permissions, using localStorage only');
+            }
+        }
+
+        // Save theme to Firebase (with fallback)
+        async function saveThemeToFirebase(theme) {
+            const ip = await getUserIP();
+            if (!ip) return;
+
+            // Always save to localStorage as backup
+            localStorage.setItem('selectedTheme', theme);
+
+            try {
+                const themeRef = database.ref(`themes/${ip}`);
+                await themeRef.set(theme);
+            } catch (error) {
+                console.log('Could not save to Firebase, theme saved to localStorage only');
+            }
+        }
+
+        // Apply theme to document
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('selectedTheme', theme);
+        }
+
+        // Update active theme in UI
+        function updateActiveTheme(theme) {
+            themeOptions.forEach(option => {
+                option.classList.remove('active');
+                if (option.dataset.theme === theme) {
+                    option.classList.add('active');
+                }
+            });
+        }
+
+        // Theme option click handlers
+        themeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const theme = option.dataset.theme;
+                applyTheme(theme);
+                updateActiveTheme(theme);
+                saveThemeToFirebase(theme);
+                themeDropdown.classList.add('hidden');
+            });
+        });
+
+        // Initialize theme on page load
+        // First check localStorage, then Firebase
+        const savedTheme = localStorage.getItem('selectedTheme');
+        if (savedTheme) {
+            applyTheme(savedTheme);
+            updateActiveTheme(savedTheme);
+        } else {
+            loadThemeFromFirebase();
+        }
 
         // Navbar Scroll Effect
         window.addEventListener('scroll', () => {

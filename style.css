@@ -9,6 +9,90 @@
     --glass-border: rgba(255, 255, 255, 0.05);
 }
 
+/* Theme: Purple (Default) */
+[data-theme="purple"] {
+    --bg-dark: #050508;
+    --bg-card: rgba(15, 15, 25, 0.7);
+    --primary-grad: linear-gradient(135deg, #9d50bb 0%, #6e48aa 100%);
+    --primary-color: #9d50bb;
+    --text-main: #ffffff;
+    --text-muted: #a0a0b0;
+    --accent-glow: rgba(157, 80, 187, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+/* Theme: Blue */
+[data-theme="blue"] {
+    --bg-dark: #0a0e1a;
+    --bg-card: rgba(15, 25, 40, 0.7);
+    --primary-grad: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    --primary-color: #3b82f6;
+    --text-main: #ffffff;
+    --text-muted: #a0aec0;
+    --accent-glow: rgba(59, 130, 246, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+/* Theme: Green */
+[data-theme="green"] {
+    --bg-dark: #050a08;
+    --bg-card: rgba(10, 25, 15, 0.7);
+    --primary-grad: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    --primary-color: #10b981;
+    --text-main: #ffffff;
+    --text-muted: #a0b0a8;
+    --accent-glow: rgba(16, 185, 129, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+/* Theme: Red */
+[data-theme="red"] {
+    --bg-dark: #0a0505;
+    --bg-card: rgba(25, 10, 10, 0.7);
+    --primary-grad: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    --primary-color: #ef4444;
+    --text-main: #ffffff;
+    --text-muted: #b0a0a0;
+    --accent-glow: rgba(239, 68, 68, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+/* Theme: Orange */
+[data-theme="orange"] {
+    --bg-dark: #0a0805;
+    --bg-card: rgba(25, 20, 10, 0.7);
+    --primary-grad: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    --primary-color: #f97316;
+    --text-main: #ffffff;
+    --text-muted: #b0a8a0;
+    --accent-glow: rgba(249, 115, 22, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+/* Theme: Pink */
+[data-theme="pink"] {
+    --bg-dark: #0a0508;
+    --bg-card: rgba(25, 10, 15, 0.7);
+    --primary-grad: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+    --primary-color: #ec4899;
+    --text-main: #ffffff;
+    --text-muted: #b0a0b0;
+    --accent-glow: rgba(236, 72, 153, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.05);
+}
+
+/* Theme: Cyan */
+[data-theme="cyan"] {
+    --bg-dark: #050a0a;
+    --bg-card: rgba(10, 25, 25, 0.7);
+    --primary-grad: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    --primary-color: #06b6d4;
+    --text-main: #ffffff;
+    --text-muted: #a0b0b0;
+    --accent-glow: rgba(6, 182, 212, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.05);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -28,6 +112,41 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(157, 80, 187, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(110, 72, 170, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 40% 40%, rgba(157, 80, 187, 0.05) 0%, transparent 30%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(157, 80, 187, 0.03) 0%, transparent 25%),
+        radial-gradient(circle at 85% 30%, rgba(110, 72, 170, 0.03) 0%, transparent 25%);
+    animation: bgPulse 8s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes bgPulse {
+    0% { opacity: 0.5; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
 }
 
 @keyframes gradientShift {
@@ -228,6 +347,79 @@ body::before {
     color: white;
     position: relative;
     overflow: hidden;
+}
+
+.btn-theme {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border: 1px solid var(--glass-border);
+    padding: 10px 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-theme:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: rotate(180deg);
+}
+
+.theme-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 10px;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 16px;
+    min-width: 200px;
+    z-index: 1001;
+    animation: fadeInDown 0.3s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.theme-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.theme-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.theme-option {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.theme-option:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px currentColor;
+}
+
+.theme-option.active {
+    border-color: white;
+    box-shadow: 0 0 20px currentColor;
 }
 
 .btn-discord::before {
@@ -698,6 +890,18 @@ h1::before {
 /* Features */
 .features {
     padding: 100px 0;
+    position: relative;
+}
+
+.features::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 20%, rgba(157, 80, 187, 0.05) 0%, transparent 50%);
+    pointer-events: none;
 }
 
 .section-title {
@@ -1118,6 +1322,25 @@ h1::before {
 .pricing {
     padding: 100px 0;
     background: radial-gradient(circle at bottom right, rgba(157, 80, 187, 0.1), transparent 40%);
+    position: relative;
+}
+
+.pricing::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(157, 80, 187, 0.05) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: pricingGlow 10s ease-in-out infinite alternate;
+}
+
+@keyframes pricingGlow {
+    0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+    100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.8; }
 }
 
 .pricing-grid {
@@ -1468,6 +1691,7 @@ h1::before {
     z-index: 2000;
     align-items: center;
     justify-content: center;
+    animation: fadeIn 0.3s ease;
 }
 
 .auth-modal.active {
@@ -1483,9 +1707,21 @@ h1::before {
     width: 100%;
     max-width: 450px;
     position: relative;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 100px rgba(157, 80, 187, 0.1);
     max-height: 90vh;
     overflow-y: auto;
+    animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .close-modal {
@@ -1497,13 +1733,15 @@ h1::before {
     color: var(--text-muted);
     font-size: 1.5rem;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 8px;
+    border-radius: 50%;
 }
 
 .close-modal:hover {
     color: var(--text-main);
-    transform: rotate(90deg);
+    transform: rotate(90deg) scale(1.1);
+    background: rgba(157, 80, 187, 0.1);
 }
 
 .auth-tabs {
@@ -1522,18 +1760,45 @@ h1::before {
     color: var(--text-muted);
     font-weight: 600;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+}
+
+.tab-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(157, 80, 187, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.tab-btn:hover::before {
+    left: 100%;
 }
 
 .tab-btn:hover {
     color: var(--text-main);
     background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
 }
 
 .tab-btn.active {
     color: var(--primary-color);
     background: rgba(157, 80, 187, 0.1);
+    border-color: rgba(157, 80, 187, 0.4);
+    box-shadow: 0 0 20px rgba(157, 80, 187, 0.2);
+    animation: tabPulse 0.5s ease;
+}
+
+@keyframes tabPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
 
 .auth-form {
@@ -1571,13 +1836,15 @@ h1::before {
     color: var(--text-main);
     font-size: 1rem;
     font-family: 'Outfit', sans-serif;
-    transition: 0.3s;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .form-group input:focus {
     outline: none;
     border-color: var(--primary-color);
     background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 20px rgba(157, 80, 187, 0.2);
+    transform: translateY(-2px);
 }
 
 .form-group input::placeholder {
@@ -1712,6 +1979,33 @@ h1::before {
     background: linear-gradient(135deg, rgba(157, 80, 187, 0.06) 0%, rgba(110, 72, 170, 0.04) 100%);
     border: 1px solid rgba(157, 80, 187, 0.15);
     border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-info::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, rgba(157, 80, 187, 0.05), transparent 30%);
+    animation: rotateBorder 6s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.profile-info:hover::before {
+    opacity: 1;
+}
+
+.profile-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(157, 80, 187, 0.2);
+    border-color: rgba(157, 80, 187, 0.3);
 }
 
 .profile-avatar {
@@ -1725,12 +2019,15 @@ h1::before {
     object-fit: cover;
     border: 4px solid var(--primary-color);
     box-shadow: 0 10px 30px rgba(157, 80, 187, 0.4);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    z-index: 1;
 }
 
 .profile-avatar img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 15px 40px rgba(157, 80, 187, 0.5);
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 20px 50px rgba(157, 80, 187, 0.6), 0 0 30px rgba(157, 80, 187, 0.3);
+    border-color: #6e48aa;
 }
 
 .profile-details {
@@ -1744,6 +2041,23 @@ h1::before {
     border: 1px solid rgba(157, 80, 187, 0.1);
     border-radius: 12px;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.detail-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, rgba(157, 80, 187, 0.15), transparent);
+    transition: width 0.3s ease;
+}
+
+.detail-item:hover::before {
+    width: 100%;
 }
 
 .detail-item:hover {
@@ -1965,6 +2279,33 @@ h1::before {
     background: linear-gradient(135deg, rgba(157, 80, 187, 0.06) 0%, rgba(110, 72, 170, 0.04) 100%);
     border: 1px solid rgba(157, 80, 187, 0.15);
     border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.public-profile-info::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, rgba(157, 80, 187, 0.05), transparent 30%);
+    animation: rotateBorder 8s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.public-profile-info:hover::before {
+    opacity: 1;
+}
+
+.public-profile-info:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(157, 80, 187, 0.2);
+    border-color: rgba(157, 80, 187, 0.3);
 }
 
 .public-profile-avatar {
@@ -1978,6 +2319,13 @@ h1::before {
     object-fit: cover;
     border: 4px solid var(--primary-color);
     box-shadow: 0 10px 30px rgba(157, 80, 187, 0.4);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.public-profile-avatar img:hover {
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 20px 50px rgba(157, 80, 187, 0.6), 0 0 30px rgba(157, 80, 187, 0.3);
+    border-color: #6e48aa;
 }
 
 .public-profile-details {
