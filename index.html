@@ -34,23 +34,69 @@
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
 
+    <!-- Toast Notifications Container -->
+    <div id="toastContainer" class="toast-container"></div>
+
+    <!-- Language Selection Modal -->
+    <div id="languageModal" class="auth-modal active">
+        <div class="modal-content language-modal">
+            <div class="language-header">
+                <h2>Wybierz język / Choose Language / Выберите язык</h2>
+                <p>Select your preferred language</p>
+            </div>
+            <div class="language-options">
+                <button class="language-btn" data-lang="pl">
+                    <img src="https://flagcdn.com/w40/pl.png" alt="Polish">
+                    <span>Polski</span>
+                    <small>PLN</small>
+                </button>
+                <button class="language-btn" data-lang="en">
+                    <img src="https://flagcdn.com/w40/gb.png" alt="English">
+                    <span>English</span>
+                    <small>USD</small>
+                </button>
+                <button class="language-btn" data-lang="ru">
+                    <img src="https://flagcdn.com/w40/ru.png" alt="Russian">
+                    <span>Русский</span>
+                    <small>RUB</small>
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Floating Particles -->
     <div class="particles" id="particles"></div>
 
     <nav class="navbar">
         <div class="container">
             <div class="logo">
-                <img src="logo.png" alt="Anaclient" onerror="this.src='https://via.placeholder.com/40/9d50bb/ffffff?text=A'">
+                <img src="https://i.imgur.com/eot5356.png" alt="Anaclient" onerror="this.style.display='none'; this.nextElementSibling.classList.add('visible');">
+                <div class="logo-fallback">A</div>
                 <span>Anaclient</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#features">Funkcje</a></li>
-                <li><a href="#video-showcase">Showcase</a></li>
-                <li><a href="#showcase">Moduły</a></li>
-                <li><a href="#pricing">Cennik</a></li>
-                <li><a href="#testimonials">Opinie</a></li>
+                <li><a href="#features" data-i18n="nav.features">Funkcje</a></li>
+                <li><a href="#video-showcase" data-i18n="nav.showcase">Showcase</a></li>
+                <li><a href="#showcase" data-i18n="nav.modules">Moduły</a></li>
+                <li><a href="#pricing" data-i18n="nav.pricing">Cennik</a></li>
+                <li><a href="#testimonials" data-i18n="nav.testimonials">Opinie</a></li>
             </ul>
             <div class="nav-cta">
+                <button id="langBtn" class="btn btn-theme"><i class="fas fa-globe"></i></button>
+                <div id="langDropdown" class="theme-dropdown hidden">
+                    <div class="theme-title">Wybierz język</div>
+                    <div class="theme-options">
+                        <button class="lang-option" data-lang="pl">
+                            <img src="https://flagcdn.com/w20/pl.png" alt="PL"> PL
+                        </button>
+                        <button class="lang-option" data-lang="en">
+                            <img src="https://flagcdn.com/w20/gb.png" alt="EN"> EN
+                        </button>
+                        <button class="lang-option" data-lang="ru">
+                            <img src="https://flagcdn.com/w20/ru.png" alt="RU"> RU
+                        </button>
+                    </div>
+                </div>
                 <button id="themeBtn" class="btn btn-theme"><i class="fas fa-palette"></i></button>
                 <div id="themeDropdown" class="theme-dropdown hidden">
                     <div class="theme-title">Wybierz motyw</div>
@@ -80,19 +126,19 @@
     <div class="version-banner">
         <div class="container">
             <span class="version-badge">⚡ BETA</span>
-            <span class="version-text">wersja 2.1 już dostępna</span>
-            <a href="https://discord.gg/jezCVPRmdt" target="_blank" class="version-link">Dowiedz się więcej</a>
+            <span class="version-text" data-i18n="banner.version">wersja 2.1 już dostępna</span>
+            <a href="https://discord.gg/jezCVPRmdt" target="_blank" class="version-link" data-i18n="banner.learnMore">Dowiedz się więcej</a>
         </div>
     </div>
 
     <header class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Zdominuj serwer z <span class="gradient-text">Anaclient</span></h1>
-                <p>Najbardziej zaawansowany i niewykrywalny client do Minecrafta. Zoptymalizowany pod kątem PvP i użyteczności.</p>
+                <h1 data-i18n="hero.title">Zdominuj serwer z <span class="gradient-text">Anaclient</span></h1>
+                <p data-i18n="hero.subtitle">Najbardziej zaawansowany i niewykrywalny client do Minecrafta. Zoptymalizowany pod kątem PvP i użyteczności.</p>
                 <div class="hero-btns">
-                    <a href="https://discord.gg/jezCVPRmdt" target="_blank" class="btn btn-primary">Kup Teraz</a>
-                    <a href="#showcase" class="btn btn-secondary">Zobacz Showcase</a>
+                    <a href="https://discord.gg/jezCVPRmdt" target="_blank" class="btn btn-primary" data-i18n="hero.buyNow">Kup Teraz</a>
+                    <a href="#showcase" class="btn btn-secondary" data-i18n="hero.viewShowcase">Zobacz Showcase</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -124,24 +170,24 @@
     <section id="features" class="features reveal">
         <div class="container">
             <div class="section-title">
-                <h2>Dlaczego <span class="gradient-text">My</span>?</h2>
-                <p>Nasze funkcje są projektowane z myślą o najwyższej wydajności.</p>
+                <h2 data-i18n="features.title">Dlaczego <span class="gradient-text">My</span>?</h2>
+                <p data-i18n="features.subtitle">Nasze funkcje są projektowane z myślą o najwyższej wydajności.</p>
             </div>
             <div class="features-grid">
                 <div class="feature-card stagger-1">
                     <div class="icon-box"><i class="fas fa-bolt"></i></div>
-                    <h3>Wydajność</h3>
-                    <p>Zero spadków FPS. Client jest zoptymalizowany pod słabe komputery.</p>
+                    <h3 data-i18n="features.performance">Wydajność</h3>
+                    <p data-i18n="features.performanceDesc">Zero spadków FPS. Client jest zoptymalizowany pod słabe komputery.</p>
                 </div>
                 <div class="feature-card stagger-2">
                     <div class="icon-box"><i class="fas fa-ghost"></i></div>
-                    <h3>Niewykrywalność</h3>
-                    <p>Nasze bypassy są codziennie aktualizowane pod najnowsze anty-cheaty.</p>
+                    <h3 data-i18n="features.undetectable">Niewykrywalność</h3>
+                    <p data-i18n="features.undetectableDesc">Nasze bypassy są codziennie aktualizowane pod najnowsze anty-cheaty.</p>
                 </div>
                 <div class="feature-card stagger-3">
                     <div class="icon-box"><i class="fas fa-palette"></i></div>
-                    <h3>Personalizacja</h3>
-                    <p>Zmień wygląd GUI i modułów pod swój własny styl.</p>
+                    <h3 data-i18n="features.customization">Personalizacja</h3>
+                    <p data-i18n="features.customizationDesc">Zmień wygląd GUI i modułów pod swój własny styl.</p>
                 </div>
             </div>
         </div>
@@ -150,8 +196,8 @@
     <section id="video-showcase" class="showcase reveal-scale">
         <div class="container">
             <div class="section-title">
-                <h2>Video <span class="gradient-text">Showcase</span></h2>
-                <p>Zobacz jak Anaclient sprawuje się w akcji.</p>
+                <h2 data-i18n="showcase.title">Video <span class="gradient-text">Showcase</span></h2>
+                <p data-i18n="showcase.subtitle">Zobacz jak Anaclient sprawuje się w akcji.</p>
             </div>
             <div class="video-container">
                 <video autoplay loop muted playsinline>
@@ -487,50 +533,50 @@
     <section id="pricing" class="pricing reveal-scale">
         <div class="container">
             <div class="section-title">
-                <h2>Wybierz swój <span class="gradient-text">Plan</span></h2>
-                <p>Prosty i przejrzysty cennik bez ukrytych opłat.</p>
+                <h2 data-i18n="pricing.title">Wybierz swój <span class="gradient-text">Plan</span></h2>
+                <p data-i18n="pricing.subtitle">Prosty i przejrzysty cennik bez ukrytych opłat.</p>
             </div>
             <div class="pricing-grid">
                 <div class="price-card stagger-1">
                     <div class="price-header">
-                        <h3>Miesiąc</h3>
-                        <div class="amount">20 PLN</div>
+                        <h3 data-i18n="pricing.month">Miesiąc</h3>
+                        <div class="amount" data-original-price="20" data-currency-pln="20 PLN" data-currency-usd="5 USD" data-currency-rub="450 RUB">20 PLN</div>
                     </div>
                     <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Wszystkie funkcje</li>
-                        <li><i class="fas fa-check"></i> Wsparcie 24/7</li>
-                        <li><i class="fas fa-check"></i> Aktualizacje</li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="pricing.allFeatures">Wszystkie funkcje</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="pricing.support247">Wsparcie 24/7</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="pricing.updates">Aktualizacje</span></li>
                     </ul>
-                    <a href="https://discord.gg/jezCVPRmdt" target="_blank" class="btn btn-outline">Wybierz</a>
+                    <a href="https://discord.gg/jezCVPRmdt" target="_blank" class="btn btn-outline" data-i18n="pricing.choose">Wybierz</a>
                 </div>
                 <div class="price-card popular stagger-2">
-                    <div class="popular-badge">NAJPOPULARNIEJSZY</div>
+                    <div class="popular-badge" data-i18n="pricing.popular">NAJPOPULARNIEJSZY</div>
                     <div class="price-header">
-                        <h3>Lifetime</h3>
+                        <h3 data-i18n="pricing.lifetime">Lifetime</h3>
                         <div class="price-wrapper">
-                            <span class="original-price">60 PLN</span>
-                            <div class="amount">50 PLN</div>
+                            <span class="original-price" data-currency-pln="60 PLN" data-currency-usd="15 USD" data-currency-rub="1350 RUB">60 PLN</span>
+                            <div class="amount" data-original-price="50" data-currency-pln="50 PLN" data-currency-usd="12 USD" data-currency-rub="1125 RUB">50 PLN</div>
                         </div>
                     </div>
                     <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Dożywotni dostęp</li>
-                        <li><i class="fas fa-check"></i> Priorytetowe wsparcie</li>
-                        <li><i class="fas fa-check"></i> Beta testy nowych funkcji</li>
-                        <li><i class="fas fa-check"></i> Rola na Discordzie</li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="pricing.lifetimeAccess">Dożywotni dostęp</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="pricing.prioritySupport">Priorytetowe wsparcie</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="pricing.betaTests">Beta testy nowych funkcji</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="pricing.discordRole">Rola na Discordzie</span></li>
                     </ul>
-                    <a href="https://discord.gg/jezCVPRmdt" target="_blank" class="btn btn-primary">Kup Teraz</a>
+                    <a href="https://discord.gg/jezCVPRmdt" target="_blank" class="btn btn-primary" data-i18n="pricing.buyNow">Kup Teraz</a>
                 </div>
                 <div class="price-card stagger-3">
                     <div class="price-header">
-                        <h3>3 miesiące</h3>
-                        <div class="amount">40 PLN</div>
+                        <h3 data-i18n="pricing.threeMonths">3 miesiące</h3>
+                        <div class="amount" data-original-price="40" data-currency-pln="40 PLN" data-currency-usd="10 USD" data-currency-rub="900 RUB">40 PLN</div>
                     </div>
                     <ul class="price-features">
-                        <li><i class="fas fa-check"></i> Wszystkie funkcje</li>
-                        <li><i class="fas fa-check"></i> Wsparcie 24/7</li>
-                        <li><i class="fas fa-check"></i> Aktualizacje</li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="pricing.allFeatures">Wszystkie funkcje</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="pricing.support247">Wsparcie 24/7</span></li>
+                        <li><i class="fas fa-check"></i> <span data-i18n="pricing.updates">Aktualizacje</span></li>
                     </ul>
-                    <a href="https://discord.gg/jezCVPRmdt" target="_blank" class="btn btn-outline">Wybierz</a>
+                    <a href="https://discord.gg/jezCVPRmdt" target="_blank" class="btn btn-outline" data-i18n="pricing.choose">Wybierz</a>
                 </div>
             </div>
         </div>
@@ -540,8 +586,8 @@
     <section id="testimonials" class="testimonials reveal">
         <div class="container">
             <div class="section-title">
-                <h2>Co mówią <span class="gradient-text">Nasi Użytkownicy</span></h2>
-                <p>Poznaj opinie społeczności o Anaclient</p>
+                <h2 data-i18n="testimonials.title">Co mówią <span class="gradient-text">Nasi Użytkownicy</span></h2>
+                <p data-i18n="testimonials.subtitle">Poznaj opinie społeczności o Anaclient</p>
             </div>
             <div class="testimonials-scroll">
                 <div class="testimonials-track">
@@ -1032,6 +1078,7 @@
                 <button class="panel-tab-btn active" data-tab="profile"><i class="fas fa-user"></i> Profil</button>
                 <button class="panel-tab-btn" data-tab="privacy"><i class="fas fa-shield-alt"></i> Prywatność</button>
                 <button class="panel-tab-btn" data-tab="download"><i class="fas fa-download"></i> Pobierz Moda</button>
+                <button class="panel-tab-btn" data-tab="coupons"><i class="fas fa-ticket-alt"></i> Kupony</button>
                 <button class="panel-tab-btn" data-tab="chat"><i class="fas fa-comments"></i> Chat</button>
             </div>
             
@@ -1112,6 +1159,50 @@
                     <div class="chat-input-container">
                         <input type="text" id="chatInput" class="chat-input" placeholder="Napisz wiadomość..." maxlength="500">
                         <button id="sendChatBtn" class="btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Coupons Tab -->
+            <div id="couponsTab" class="panel-tab hidden">
+                <h2>Kupony Rabatowe</h2>
+                <div class="coupon-lottery">
+                    <div class="lottery-wheel">
+                        <div class="wheel-container">
+                            <div class="wheel" id="wheel">
+                                <div class="wheel-segment" data-discount="1">1%</div>
+                                <div class="wheel-segment" data-discount="2">2%</div>
+                                <div class="wheel-segment" data-discount="3">3%</div>
+                                <div class="wheel-segment" data-discount="4">4%</div>
+                                <div class="wheel-segment" data-discount="5">5%</div>
+                                <div class="wheel-segment" data-discount="6">6%</div>
+                                <div class="wheel-segment" data-discount="7">7%</div>
+                                <div class="wheel-segment" data-discount="8">8%</div>
+                                <div class="wheel-segment" data-discount="9">9%</div>
+                                <div class="wheel-segment" data-discount="10">10%</div>
+                            </div>
+                            <div class="wheel-pointer"></div>
+                        </div>
+                    </div>
+                    <div class="lottery-info">
+                        <p>Wylosuj kupon rabatowy! Większy rabat = mniejsza szansa.</p>
+                        <button id="spinWheelBtn" class="btn btn-primary">Losuj</button>
+                        <div id="couponResult" class="coupon-result hidden">
+                            <div class="coupon-code">
+                                <span class="discount-value" id="discountValue"></span>
+                                <span class="coupon-text">RABAT</span>
+                            </div>
+                            <div class="coupon-details">
+                                <p>Kod: <span id="couponCode"></span></p>
+                                <p>Ważny przez: 24h</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="coupon-history">
+                    <h3>Historia Kuponów</h3>
+                    <div id="couponHistoryList" class="coupon-history-list">
+                        <p class="no-coupons">Brak wylosowanych kuponów</p>
                     </div>
                 </div>
             </div>
@@ -1244,7 +1335,7 @@
                 const userSnapshot = await database.ref('users').orderByChild('uid').equalTo(uid).once('value');
 
                 if (!userSnapshot.exists()) {
-                    alert('Nie znaleziono użytkownika');
+                    showToast('Nie znaleziono użytkownika', 'error');
                     return;
                 }
 
@@ -1263,9 +1354,555 @@
                 document.getElementById('publicProfileModal').classList.add('active');
             } catch (error) {
                 console.error('Error loading user profile:', error);
-                alert('Wystąpił błąd podczas ładowania profilu');
+                showToast('Wystąpił błąd podczas ładowania profilu', 'error');
             }
         }
+
+        // Language System
+        const translations = {
+            pl: {
+                'nav.features': 'Funkcje',
+                'nav.showcase': 'Showcase',
+                'nav.modules': 'Moduły',
+                'nav.pricing': 'Cennik',
+                'nav.testimonials': 'Opinie',
+                'banner.version': 'wersja 2.1 już dostępna',
+                'banner.learnMore': 'Dowiedz się więcej',
+                'hero.title': 'Zdominuj serwer z <span class="gradient-text">Anaclient</span>',
+                'hero.subtitle': 'Najbardziej zaawansowany i niewykrywalny client do Minecrafta. Zoptymalizowany pod kątem PvP i użyteczności.',
+                'hero.buyNow': 'Kup Teraz',
+                'hero.viewShowcase': 'Zobacz Showcase',
+                'features.title': 'Dlaczego <span class="gradient-text">My</span>?',
+                'features.subtitle': 'Nasze funkcje są projektowane z myślą o najwyższej wydajności.',
+                'features.performance': 'Wydajność',
+                'features.performanceDesc': 'Zero spadków FPS. Client jest zoptymalizowany pod słabe komputery.',
+                'features.undetectable': 'Niewykrywalność',
+                'features.undetectableDesc': 'Nasze bypassy są codziennie aktualizowane pod najnowsze anty-cheaty.',
+                'features.customization': 'Personalizacja',
+                'features.customizationDesc': 'Zmień wygląd GUI i modułów pod swój własny styl.',
+                'showcase.title': 'Video <span class="gradient-text">Showcase</span>',
+                'showcase.subtitle': 'Zobacz jak Anaclient sprawuje się w akcji.',
+                'pricing.title': 'Wybierz swój <span class="gradient-text">Plan</span>',
+                'pricing.subtitle': 'Prosty i przejrzysty cennik bez ukrytych opłat.',
+                'pricing.month': 'Miesiąc',
+                'pricing.lifetime': 'Lifetime',
+                'pricing.threeMonths': '3 miesiące',
+                'pricing.popular': 'NAJPOPULARNIEJSZY',
+                'pricing.allFeatures': 'Wszystkie funkcje',
+                'pricing.support247': 'Wsparcie 24/7',
+                'pricing.updates': 'Aktualizacje',
+                'pricing.lifetimeAccess': 'Dożywotni dostęp',
+                'pricing.prioritySupport': 'Priorytetowe wsparcie',
+                'pricing.betaTests': 'Beta testy nowych funkcji',
+                'pricing.discordRole': 'Rola na Discordzie',
+                'pricing.choose': 'Wybierz',
+                'pricing.buyNow': 'Kup Teraz',
+                'testimonials.title': 'Co mówią <span class="gradient-text">Nasi Użytkownicy</span>',
+                'testimonials.subtitle': 'Poznaj opinie społeczności o Anaclient'
+            },
+            en: {
+                'nav.features': 'Features',
+                'nav.showcase': 'Showcase',
+                'nav.modules': 'Modules',
+                'nav.pricing': 'Pricing',
+                'nav.testimonials': 'Reviews',
+                'banner.version': 'version 2.1 now available',
+                'banner.learnMore': 'Learn more',
+                'hero.title': 'Dominate the server with <span class="gradient-text">Anaclient</span>',
+                'hero.subtitle': 'The most advanced and undetectable Minecraft client. Optimized for PvP and utility.',
+                'hero.buyNow': 'Buy Now',
+                'hero.viewShowcase': 'View Showcase',
+                'features.title': 'Why <span class="gradient-text">Us</span>?',
+                'features.subtitle': 'Our features are designed with maximum performance in mind.',
+                'features.performance': 'Performance',
+                'features.performanceDesc': 'Zero FPS drops. Client is optimized for weak computers.',
+                'features.undetectable': 'Undetectable',
+                'features.undetectableDesc': 'Our bypasses are updated daily for the latest anti-cheats.',
+                'features.customization': 'Customization',
+                'features.customizationDesc': 'Change the look of GUI and modules to your own style.',
+                'showcase.title': 'Video <span class="gradient-text">Showcase</span>',
+                'showcase.subtitle': 'See how Anaclient performs in action.',
+                'pricing.title': 'Choose Your <span class="gradient-text">Plan</span>',
+                'pricing.subtitle': 'Simple and transparent pricing with no hidden fees.',
+                'pricing.month': 'Month',
+                'pricing.lifetime': 'Lifetime',
+                'pricing.threeMonths': '3 Months',
+                'pricing.popular': 'MOST POPULAR',
+                'pricing.allFeatures': 'All features',
+                'pricing.support247': '24/7 Support',
+                'pricing.updates': 'Updates',
+                'pricing.lifetimeAccess': 'Lifetime access',
+                'pricing.prioritySupport': 'Priority support',
+                'pricing.betaTests': 'Beta tests for new features',
+                'pricing.discordRole': 'Discord role',
+                'pricing.choose': 'Choose',
+                'pricing.buyNow': 'Buy Now',
+                'testimonials.title': 'What Our <span class="gradient-text">Users Say</span>',
+                'testimonials.subtitle': 'Discover community opinions about Anaclient'
+            },
+            ru: {
+                'nav.features': 'Функции',
+                'nav.showcase': 'Шоукейс',
+                'nav.modules': 'Модули',
+                'nav.pricing': 'Цены',
+                'nav.testimonials': 'Отзывы',
+                'banner.version': 'версия 2.1 уже доступна',
+                'banner.learnMore': 'Узнать больше',
+                'hero.title': 'Доминируй на сервере с <span class="gradient-text">Anaclient</span>',
+                'hero.subtitle': 'Самый продвинутый и необнаруживаемый клиент для Minecraft. Оптимизирован для PvP и утилит.',
+                'hero.buyNow': 'Купить сейчас',
+                'hero.viewShowcase': 'Посмотреть шоукейс',
+                'features.title': 'Почему <span class="gradient-text">Мы</span>?',
+                'features.subtitle': 'Наши функции разработаны с максимальной производительностью.',
+                'features.performance': 'Производительность',
+                'features.performanceDesc': 'Нулевые падения FPS. Клиент оптимизирован для слабых компьютеров.',
+                'features.undetectable': 'Необнаруживаемость',
+                'features.undetectableDesc': 'Наши обходы обновляются ежедневно для последних античитов.',
+                'features.customization': 'Персонализация',
+                'features.customizationDesc': 'Измените внешний вид GUI и модулей под свой стиль.',
+                'showcase.title': 'Видео <span class="gradient-text">Шоукейс</span>',
+                'showcase.subtitle': 'Посмотрите, как работает Anaclient в действии.',
+                'pricing.title': 'Выберите свой <span class="gradient-text">План</span>',
+                'pricing.subtitle': 'Простые и прозрачные цены без скрытых комиссий.',
+                'pricing.month': 'Месяц',
+                'pricing.lifetime': 'Навсегда',
+                'pricing.threeMonths': '3 месяца',
+                'pricing.popular': 'ПОПУЛЯРНЫЙ',
+                'pricing.allFeatures': 'Все функции',
+                'pricing.support247': 'Поддержка 24/7',
+                'pricing.updates': 'Обновления',
+                'pricing.lifetimeAccess': 'Пожизненный доступ',
+                'pricing.prioritySupport': 'Приоритетная поддержка',
+                'pricing.betaTests': 'Бета-тесты новых функций',
+                'pricing.discordRole': 'Роль в Discord',
+                'pricing.choose': 'Выбрать',
+                'pricing.buyNow': 'Купить сейчас',
+                'testimonials.title': 'Что говорят наши <span class="gradient-text">Пользователи</span>',
+                'testimonials.subtitle': 'Узнайте мнение сообщества о Anaclient'
+            }
+        };
+
+        const currencies = {
+            pl: 'PLN',
+            en: 'USD',
+            ru: 'RUB'
+        };
+
+        let currentLanguage = localStorage.getItem('language') || 'pl';
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            localStorage.setItem('language', lang);
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang] && translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update currency
+            updateCurrency(lang);
+
+            // Hide language modal if it's visible
+            document.getElementById('languageModal').classList.remove('active');
+        }
+
+        function updateCurrency(lang) {
+            const currency = currencies[lang];
+            
+            // Update all price elements
+            document.querySelectorAll('[data-currency-' + currency + ']').forEach(element => {
+                // Check if this is a discounted price
+                if (element.dataset.discountedPrice) {
+                    const originalCurrencyPrice = element.getAttribute('data-currency-' + currency);
+                    const originalCurrencyValue = parseInt(originalCurrencyPrice.split(' ')[0]);
+                    const discount = 1 - (element.dataset.discountedPrice / parseInt(element.dataset.originalPrice));
+                    const discountedCurrencyValue = Math.round(originalCurrencyValue * discount);
+                    const currencySymbol = originalCurrencyPrice.split(' ')[1];
+                    element.textContent = discountedCurrencyValue + ' ' + currencySymbol;
+                } else {
+                    element.textContent = element.getAttribute('data-currency-' + currency);
+                }
+            });
+
+            // Update original prices
+            document.querySelectorAll('.original-price').forEach(element => {
+                if (element.hasAttribute('data-currency-' + currency)) {
+                    element.textContent = element.getAttribute('data-currency-' + currency);
+                }
+            });
+        }
+
+        // Language selection modal buttons
+        document.querySelectorAll('.language-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        // Language dropdown in navbar
+        const langBtn = document.getElementById('langBtn');
+        const langDropdown = document.getElementById('langDropdown');
+
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.lang-option').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                setLanguage(lang);
+                langDropdown.classList.add('hidden');
+            });
+        });
+
+        // Check if language is already set, if not show modal
+        if (!localStorage.getItem('language')) {
+            document.getElementById('languageModal').classList.add('active');
+        } else {
+            document.getElementById('languageModal').classList.remove('active');
+            setLanguage(currentLanguage);
+        }
+
+        // Toast Notification System
+        function showToast(message, type = 'info', duration = 4000) {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            
+            const icons = {
+                success: 'fa-check-circle',
+                error: 'fa-times-circle',
+                warning: 'fa-exclamation-triangle',
+                info: 'fa-info-circle'
+            };
+            
+            toast.innerHTML = `
+                <i class="fas ${icons[type]} toast-icon"></i>
+                <div class="toast-content">
+                    <div class="toast-message">${message}</div>
+                </div>
+                <i class="fas fa-times toast-close"></i>
+            `;
+            
+            // Close on click
+            toast.addEventListener('click', () => {
+                removeToast(toast);
+            });
+            
+            // Auto remove after duration
+            setTimeout(() => {
+                removeToast(toast);
+            }, duration);
+            
+            container.appendChild(toast);
+        }
+        
+        function removeToast(toast) {
+            toast.classList.add('removing');
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }
+
+        // Coupon Lottery System
+        const spinWheelBtn = document.getElementById('spinWheelBtn');
+        const wheel = document.getElementById('wheel');
+        const couponResult = document.getElementById('couponResult');
+        const discountValue = document.getElementById('discountValue');
+        const couponCode = document.getElementById('couponCode');
+
+        // Discount probabilities (higher discount = lower chance)
+        const discountProbabilities = [
+            { discount: 1, probability: 40 },
+            { discount: 2, probability: 25 },
+            { discount: 3, probability: 15 },
+            { discount: 4, probability: 10 },
+            { discount: 5, probability: 5 },
+            { discount: 6, probability: 3 },
+            { discount: 7, probability: 1 },
+            { discount: 8, probability: 0.5 },
+            { discount: 9, probability: 0.4 },
+            { discount: 10, probability: 0.1 }
+        ];
+
+        function getRandomDiscount() {
+            const random = Math.random() * 100;
+            let cumulative = 0;
+            
+            for (const item of discountProbabilities) {
+                cumulative += item.probability;
+                if (random <= cumulative) {
+                    return item.discount;
+                }
+            }
+            return 1; // Default to 1% if something goes wrong
+        }
+
+        function generateCouponCode() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = '';
+            for (let i = 0; i < 8; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+
+        spinWheelBtn.addEventListener('click', async () => {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                showToast('Musisz być zalogowany aby losować kupony', 'warning');
+                return;
+            }
+
+            // Get user role to check if Owner
+            let isOwner = false;
+            try {
+                const userSnapshot = await database.ref('users').orderByChild('uid').equalTo(currentUser.uid).once('value');
+                if (userSnapshot.exists()) {
+                    userSnapshot.forEach(childSnapshot => {
+                        const userData = childSnapshot.val();
+                        if (userData.role === 'Owner') {
+                            isOwner = true;
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('Error checking user role:', error);
+            }
+
+            // Check if user can spin (7-day cooldown) - skip for Owner
+            if (!isOwner) {
+                try {
+                    const lastSpinSnapshot = await database.ref(`users/${currentUser.uid}/lastCouponSpin`).once('value');
+                    if (lastSpinSnapshot.exists()) {
+                        const lastSpinTime = lastSpinSnapshot.val();
+                        const daysSinceLastSpin = (Date.now() - lastSpinTime) / (1000 * 60 * 60 * 24);
+                        
+                        if (daysSinceLastSpin < 7) {
+                            const daysRemaining = Math.ceil(7 - daysSinceLastSpin);
+                            showToast(`Możesz losować ponownie za ${daysRemaining} dni`, 'warning');
+                            return;
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error checking last spin time:', error);
+                }
+            }
+
+            // Disable button during spin
+            spinWheelBtn.disabled = true;
+            spinWheelBtn.textContent = 'Losowanie...';
+
+            // Get random discount
+            const discount = getRandomDiscount();
+
+            // Calculate wheel rotation (each segment is 36 degrees)
+            const segmentAngle = 360 / 10;
+            const targetSegment = discount - 1; // 0-indexed
+            const rotations = 5; // Number of full rotations
+            const targetAngle = (rotations * 360) + (targetSegment * segmentAngle) + (segmentAngle / 2);
+
+            // Spin the wheel
+            wheel.style.transform = `rotate(${targetAngle}deg)`;
+
+            // Wait for animation to complete
+            setTimeout(async () => {
+                // Generate coupon code
+                const code = generateCouponCode();
+
+                // Display result
+                discountValue.textContent = discount + '%';
+                couponCode.textContent = code;
+                couponResult.classList.remove('hidden');
+
+                // Save coupon to Firebase
+                try {
+                    const now = new Date();
+                    const expiresAt = new Date(now.getTime() + (24 * 60 * 60 * 1000)); // 24 hours from now
+
+                    // Mark all existing active coupons as used (only 1 active coupon allowed) - skip for Owner
+                    if (!isOwner) {
+                        const existingCouponsSnapshot = await database.ref(`coupons/${currentUser.uid}`).once('value');
+                        if (existingCouponsSnapshot.exists()) {
+                            const updates = {};
+                            existingCouponsSnapshot.forEach(childSnapshot => {
+                                const coupon = childSnapshot.val();
+                                if (Date.now() <= coupon.expiresAtTimestamp && !coupon.used) {
+                                    updates[`${childSnapshot.key}/used`] = true;
+                                }
+                            });
+                            if (Object.keys(updates).length > 0) {
+                                await database.ref(`coupons/${currentUser.uid}`).update(updates);
+                            }
+                        }
+                    }
+
+                    const couponData = {
+                        code: code,
+                        discount: discount,
+                        createdAt: now.toISOString(),
+                        createdAtTimestamp: Date.now(),
+                        expiresAt: expiresAt.toISOString(),
+                        expiresAtTimestamp: expiresAt.getTime(),
+                        userId: currentUser.uid,
+                        used: false
+                    };
+
+                    await database.ref(`coupons/${currentUser.uid}/${code}`).set(couponData);
+
+                    // Save last spin time for 7-day cooldown - skip for Owner
+                    if (!isOwner) {
+                        await database.ref(`users/${currentUser.uid}/lastCouponSpin`).set(Date.now());
+                    }
+
+                    // Load updated history
+                    loadCouponHistory();
+                } catch (error) {
+                    console.error('Error saving coupon:', error);
+                }
+
+                // Re-enable button
+                spinWheelBtn.disabled = false;
+                spinWheelBtn.textContent = 'Losuj ponownie';
+            }, 4000); // 4 seconds animation
+        });
+
+        async function loadCouponHistory() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) return;
+
+            const couponHistoryList = document.getElementById('couponHistoryList');
+            couponHistoryList.innerHTML = '<p class="no-coupons">Ładowanie historii...</p>';
+
+            try {
+                const snapshot = await database.ref(`coupons/${currentUser.uid}`).once('value');
+                
+                if (!snapshot.exists()) {
+                    couponHistoryList.innerHTML = '<p class="no-coupons">Brak wylosowanych kuponów</p>';
+                    return;
+                }
+
+                const coupons = [];
+                snapshot.forEach(childSnapshot => {
+                    coupons.push(childSnapshot.val());
+                });
+
+                // Sort by creation date (newest first)
+                coupons.sort((a, b) => b.createdAtTimestamp - a.createdAtTimestamp);
+
+                couponHistoryList.innerHTML = '';
+
+                coupons.forEach(coupon => {
+                    const isExpired = Date.now() > coupon.expiresAtTimestamp;
+                    const statusClass = isExpired ? 'expired' : 'active';
+                    const statusText = isExpired ? 'Wygasł' : 'Aktywny';
+
+                    const createdAt = new Date(coupon.createdAt);
+                    const expiresAt = new Date(coupon.expiresAt);
+
+                    const couponItem = document.createElement('div');
+                    couponItem.className = 'coupon-history-item';
+                    couponItem.innerHTML = `
+                        <div class="discount">${coupon.discount}%</div>
+                        <div class="code">${coupon.code}</div>
+                        <div class="date">Utworzono: ${createdAt.toLocaleDateString('pl-PL')} ${createdAt.toLocaleTimeString('pl-PL', {hour: '2-digit', minute: '2-digit'})}</div>
+                        <div class="date">Ważny do: ${expiresAt.toLocaleDateString('pl-PL')} ${expiresAt.toLocaleTimeString('pl-PL', {hour: '2-digit', minute: '2-digit'})}</div>
+                        <div class="status ${statusClass}">${statusText}</div>
+                    `;
+                    couponHistoryList.appendChild(couponItem);
+                });
+
+                // Apply discount to pricing section
+                applyCouponDiscount(coupons);
+            } catch (error) {
+                console.error('Error loading coupon history:', error);
+                couponHistoryList.innerHTML = '<p class="no-coupons">Wystąpił błąd podczas ładowania historii</p>';
+            }
+        }
+
+        async function applyCouponDiscount(coupons) {
+            // Find active coupon (not expired and not used)
+            const activeCoupon = coupons.find(coupon => 
+                Date.now() <= coupon.expiresAtTimestamp && !coupon.used
+            );
+
+            if (!activeCoupon) return;
+
+            const discount = activeCoupon.discount;
+            const priceElements = document.querySelectorAll('.amount[data-original-price]');
+            const currentCurrency = currencies[currentLanguage];
+
+            priceElements.forEach(element => {
+                const originalPrice = parseInt(element.dataset.originalPrice);
+                const discountedPrice = Math.round(originalPrice * (1 - discount / 100));
+
+                // Create price wrapper if it doesn't exist
+                if (!element.parentElement.classList.contains('price-wrapper')) {
+                    const wrapper = document.createElement('div');
+                    wrapper.className = 'price-wrapper';
+                    element.parentNode.insertBefore(wrapper, element);
+                    wrapper.appendChild(element);
+                }
+
+                // Add original price if not already present
+                const wrapper = element.parentElement;
+                if (!wrapper.querySelector('.original-price')) {
+                    const originalPriceSpan = document.createElement('span');
+                    originalPriceSpan.className = 'original-price';
+                    const originalCurrencyPrice = element.getAttribute('data-currency-' + currentCurrency);
+                    originalPriceSpan.textContent = originalCurrencyPrice;
+                    originalPriceSpan.setAttribute('data-currency-pln', element.getAttribute('data-currency-pln'));
+                    originalPriceSpan.setAttribute('data-currency-usd', element.getAttribute('data-currency-usd'));
+                    originalPriceSpan.setAttribute('data-currency-rub', element.getAttribute('data-currency-rub'));
+                    wrapper.insertBefore(originalPriceSpan, element);
+                }
+
+                // Calculate discounted price in current currency
+                const currencyKey = 'currency-' + currentCurrency;
+                const originalCurrencyPrice = element.getAttribute('data-' + currencyKey);
+                const originalCurrencyValue = parseInt(originalCurrencyPrice.split(' ')[0]);
+                const discountedCurrencyValue = Math.round(originalCurrencyValue * (1 - discount / 100));
+                const currencySymbol = originalCurrencyPrice.split(' ')[1];
+                
+                // Update discounted price
+                element.textContent = discountedCurrencyValue + ' ' + currencySymbol;
+                
+                // Store original price for currency switching
+                element.dataset.discountedPrice = discountedCurrencyValue;
+            });
+
+            showToast(`Aktywowano rabat ${discount}% na wszystkie plany!`, 'success', 6000);
+        }
+
+        // Load coupon discount on page load if logged in
+        async function loadCouponDiscountOnLoad() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) return;
+
+            try {
+                const snapshot = await database.ref(`coupons/${currentUser.uid}`).once('value');
+                
+                if (!snapshot.exists()) return;
+
+                const coupons = [];
+                snapshot.forEach(childSnapshot => {
+                    coupons.push(childSnapshot.val());
+                });
+
+                applyCouponDiscount(coupons);
+            } catch (error) {
+                console.error('Error loading coupon discount:', error);
+            }
+        }
+
+        // Load coupon discount on page load
+        loadCouponDiscountOnLoad();
+
 
         // Close public profile modal
         document.getElementById('closePublicProfileModal').addEventListener('click', () => {
@@ -1406,6 +2043,11 @@
                 // Load chat messages when chat tab is opened
                 if (btn.dataset.tab === 'chat') {
                     loadChatMessages();
+                }
+
+                // Load coupon history when coupons tab is opened
+                if (btn.dataset.tab === 'coupons') {
+                    loadCouponHistory();
                 }
             });
         });

@@ -244,6 +244,23 @@ body::before {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.logo-fallback {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #9d50bb 0%, #6e48aa 100%);
+    border-radius: 8px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: white;
+}
+
+.logo-fallback.visible {
+    display: flex;
+}
+
 .logo:hover img {
     transform: rotate(10deg) scale(1.1);
     box-shadow: 0 0 20px rgba(157, 80, 187, 0.5);
@@ -2435,6 +2452,441 @@ h1::before {
 @keyframes scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+}
+
+/* Coupon Lottery Styles */
+.coupon-lottery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.lottery-wheel {
+    position: relative;
+}
+
+.wheel-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+}
+
+.wheel {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 8px solid var(--primary-color);
+    box-shadow: 0 0 30px rgba(157, 80, 187, 0.5);
+    transition: transform 4s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+    background: conic-gradient(
+        #9d50bb 0deg 36deg,
+        #3b82f6 36deg 72deg,
+        #10b981 72deg 108deg,
+        #ef4444 108deg 144deg,
+        #f97316 144deg 180deg,
+        #ec4899 180deg 216deg,
+        #06b6d4 216deg 252deg,
+        #8b5cf6 252deg 288deg,
+        #f59e0b 288deg 324deg,
+        #14b8a6 324deg 360deg
+    );
+}
+
+.wheel-segment {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.wheel-segment:nth-child(1) { transform: rotate(18deg); }
+.wheel-segment:nth-child(2) { transform: rotate(54deg); }
+.wheel-segment:nth-child(3) { transform: rotate(90deg); }
+.wheel-segment:nth-child(4) { transform: rotate(126deg); }
+.wheel-segment:nth-child(5) { transform: rotate(162deg); }
+.wheel-segment:nth-child(6) { transform: rotate(198deg); }
+.wheel-segment:nth-child(7) { transform: rotate(234deg); }
+.wheel-segment:nth-child(8) { transform: rotate(270deg); }
+.wheel-segment:nth-child(9) { transform: rotate(306deg); }
+.wheel-segment:nth-child(10) { transform: rotate(342deg); }
+
+.wheel-pointer {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 30px solid white;
+    z-index: 10;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.lottery-info {
+    text-align: center;
+}
+
+.lottery-info p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.coupon-result {
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(157, 80, 187, 0.2) 0%, rgba(110, 72, 170, 0.1) 100%);
+    border: 2px solid var(--primary-color);
+    border-radius: 16px;
+    animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.coupon-code {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.discount-value {
+    font-size: 3rem;
+    font-weight: 800;
+    background: var(--primary-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.coupon-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.coupon-details p {
+    color: var(--text-muted);
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.coupon-details span {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.coupon-history {
+    margin-top: 30px;
+}
+
+.coupon-history h3 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 20px;
+}
+
+.coupon-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.coupon-history-item {
+    padding: 15px 20px;
+    background: rgba(157, 80, 187, 0.05);
+    border: 1px solid rgba(157, 80, 187, 0.15);
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.coupon-history-item:hover {
+    background: rgba(157, 80, 187, 0.1);
+    transform: translateX(5px);
+}
+
+.coupon-history-item .discount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.coupon-history-item .code {
+    font-family: monospace;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.coupon-history-item .date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.coupon-history-item .status {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.coupon-history-item .status.active {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+.coupon-history-item .status.expired {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.no-coupons {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 30px;
+    font-size: 0.95rem;
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+.toast {
+    padding: 16px 20px;
+    border-radius: 12px;
+    background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: slideIn 0.3s ease;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.toast:hover {
+    transform: translateX(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.toast.removing {
+    animation: slideOut 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+.toast-icon {
+    font-size: 1.2rem;
+    min-width: 24px;
+}
+
+.toast-content {
+    flex: 1;
+}
+
+.toast-message {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+.toast.success {
+    border-color: rgba(16, 185, 129, 0.3);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.toast.success .toast-icon {
+    color: #10b981;
+}
+
+.toast.error {
+    border-color: rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.toast.error .toast-icon {
+    color: #ef4444;
+}
+
+.toast.warning {
+    border-color: rgba(245, 158, 11, 0.3);
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.toast.warning .toast-icon {
+    color: #f59e0b;
+}
+
+.toast.info {
+    border-color: rgba(59, 130, 246, 0.3);
+    background: rgba(59, 130, 246, 0.1);
+}
+
+.toast.info .toast-icon {
+    color: #3b82f6;
+}
+
+.toast-close {
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 4px;
+    transition: color 0.3s ease;
+}
+
+.lang-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.lang-option:hover {
+    background: rgba(157, 80, 187, 0.1);
+}
+
+.lang-option img {
+    width: 20px;
+    height: 15px;
+    border-radius: 3px;
+    object-fit: cover;
+}
+
+.toast-close:hover {
+    color: var(--text-main);
+}
+
+/* Language Selection Modal */
+.language-modal {
+    max-width: 500px;
+    text-align: center;
+}
+
+.language-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    background: var(--primary-grad);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.language-header p {
+    color: var(--text-muted);
+    margin-bottom: 30px;
+}
+
+.language-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.language-btn {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: rgba(157, 80, 187, 0.05);
+    border: 2px solid rgba(157, 80, 187, 0.15);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.language-btn:hover {
+    background: rgba(157, 80, 187, 0.15);
+    border-color: rgba(157, 80, 187, 0.4);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(157, 80, 187, 0.2);
+}
+
+.language-btn img {
+    width: 40px;
+    height: 30px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.language-btn span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-main);
+    flex: 1;
+    text-align: left;
+}
+
+.language-btn small {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    padding: 4px 12px;
+    background: rgba(157, 80, 187, 0.1);
+    border-radius: 20px;
 }
 
 .testimonial-card {
